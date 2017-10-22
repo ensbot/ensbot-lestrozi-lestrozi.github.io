@@ -90,26 +90,17 @@ Mark this pendrive somehow (sticky, nail polisher, etc.) so you know it can only
 <h6>Now you have your passphrase</h6>
 <p>Ok, so now you have a 23 words passphrase on paper.</p>
 <p>Some people might want protection against fire/flooding/etc and engrave them on a steel sheet. If you're that kind of person, go ahead and do it, but just laminating it will probably be good enough; specially because you should have a backup somewhere else in any case - a steel sheet doesn't protect you against burglars or losing things.</p>
-<p>Warning: Don't get creative with those words! Don't print them, don't backup them online. You should just use "offline" tools that have no memory (pen, engraver, etc.)!</p>
-<p>Now you also need a password that you will <b>not write down</b>. This will be useful to buy you some time in case you get stolen, for instance.<br />If you are unsure if you're going to remember this password 5 years from now, write some kind of hint on your paper.</p>
+<p>Warning: Don't get creative with those words! Don't print them, don't backup them online. You should just use offline memory-less tools (pen, engraver, etc.)!</p>
+<p>Now you also need a password that you will <b>not write down</b>. This will be useful to buy you some time in case your words get stolen, for instance.<br />If you are unsure if you're going to remember this password 5 years from now, write some kind of hint on your paper.</p>
 <p>Now you should have something like <b>supply-initial-index-copper-can-long-few-enemy-try-submit-reduce-judge-camp-wing-two-sand-spread-dance-cost-food-assume-fat-cash<font style="color: gray">-MyRand0m!Pa55w0rdHere</font></b> and this will be your seed for the BIP32 generator!</p>
 
-<p><font class="todo">Pending BIP32 wallet generator for multiple cryptocurrencies!</font></p>
+<font class="todo">
+<p>Pending BIP32 wallet generator for multiple cryptocurrencies!</p>
 <p>I found BIP39 ones that cover many: <a href="bip39/bip39-iancoleman/index.html">Here</a> and <a href="bip39/bip39-erasmospunk/index.html">here</a>
 The first one allows a BIP32 root key to be input, but the second one (that supports more currencies) doesn't.<br />
 I could hack it to allow the BIP32 key, but where else could people validate that it's working by comparing with other implementations?</p>
+</font>
 
-
-
-
-
-
-
-You don't need to save the desktop/cli wallets if you don't plan to make transactions soon
-
-When signing a transaction, always confirm it it's the same as you generated!
-
-The most critical piece of code here is the wallet generator.. even running offline, someone (maybe me?) could have tampered with it
 
 <h2>Useful tools</h2>
 <table class="table-bordered">
@@ -239,8 +230,11 @@ The most critical piece of code here is the wallet generator.. even running offl
 <p>If you have a backup of your words and used a relatively strong passphrase, you're kinda safe. You're strongly encouraged to create new wallets and transfer your funds to them. Be careful not to lose your coins rushing to transfer them; there's no need to rush if you have a reasonably secure unwritten password.</p>
 
 <h2>General thoughts</h2>
-The derivation path contains an "external/internal" account. Set this to "1" if you wanna list the <b>change addresses</b> (ie, the address wallets send changes from your transaction if they are not made in the exact amount")
-</p>
+<p>When signing a transaction, always confirm it it's the same as you generated!</p>
+
+<p>You don't need to download the desktop/cli wallets if you don't plan to make transactions soon (but it's recommended so you can test everything is working properly).</p>
+
+<p>The derivation path contains an "external/internal" account. Set this to "1" if you wanna list the <b>change addresses</b> (ie, the address wallets send changes from your transaction if they are not made in the exact amount")</p>
 
 </body>
 </html>
