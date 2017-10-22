@@ -39,7 +39,7 @@ Store multiple cryptocurrencies safely.</p>
 
 <h2>Pre-requisites</h2>
 <ul>
-  <li>[henceforth called <em>air-gapped device</em>] A computer that you will NEVER connect to the internet AGAIN*. It can be a raspberry pi <font class="todo">[UNTESTED]</font>. I strongly encourage you to use it with a Debian-based Linux OS. I see many people recommending <a href="https://tails.boum.org/" class="external">Tails <font class="todo">[UNTESTED]</font></a></li>
+  <li>[henceforth called <em>air-gapped device</em>] A computer equiped with webcam that you will NEVER connect to the internet AGAIN*. It can be a raspberry pi <font class="todo">[UNTESTED]</font>. I strongly encourage you to use it with a Debian-based Linux OS. I see many people recommending <a href="https://tails.boum.org/" class="external">Tails <font class="todo">[UNTESTED]</font></a></li>
   <li>A 8+ GBs pendrive [This will have your bootable USB live OS] - After you install your distro, <b>ONLY</b> plug this pendrive on your air-gapped device.</li>
 </ul>
 </p>
@@ -110,7 +110,7 @@ I could hack it to allow the BIP32 key, but where else could people validate tha
   </tr>
   <tr class="align-top">
     <td><a href="qr/encodeqr/index.html">QR-code encoder</a></td>
-    <td rowspan="2"><p>As mentioned before, the safest way to transfer data from/to an air-gapped device is using QR-code!</br>Some data you may need to transfer can be big (like 15 KBs big) which would not be practical (you'd need to split it over multiple QR-codes), but it's up to you how secure you wanna be (basically, how important the money you store on cryptocurrencies is to you and how often you need to do these transfers). If you're using a Linux-based (with no auto-start for plugged USB), it's VERY unlikely that your coins could be stolen using a pendrive for moving data from/to it (as long as it's not the same pendrive as your bootable OS).</p>
+    <td rowspan="2"><p>As mentioned before, the safest way to transfer data from/to an air-gapped device is using QR-code!</br>Some data you may need to transfer can be big (like 15 KBs big) which would not be practical (you'd need to split it over multiple QR-codes), but it's up to you how secure you wanna be (basically, how important the money you store on cryptocurrencies is to you and how often you need to do these transfers).</p>
 <p>To avoid data getting corrupted on the transfer, I set the error-correction level of the QR code to 15%. There's also a visual hash on the side of the encoder so you can compare if the data has the same image on both devices.</p></td>
   </tr>
   <tr class="align-top">
