@@ -32,7 +32,7 @@ Store multiple cryptocurrencies safely.</p>
 <h2>Considerations</h2>
 <p>Before I begin, you should know that convenience is the enemy of security. Pretty much every time you try to make something more convenient, it gets less secure.</p>
 <p>Doing everything I say here will not be convenient. Making a transaction will take about 15 minutes of work, which is way less convenient (and much more secure) than as it would be using a cryptocoin exchange.</p>
-<p>But if your use-case is similar to mine, to use this as a <strong>savings account</strong>, and not like a checkings account, you should be fine. I probably won't need to make a transaction more often than once a quarter.</p>
+<p>But if your use-case is similar to mine - to use this as a <strong>savings account</strong>, and not like a checkings account - you should be fine. I probably won't need to make a transaction more often than once a quarter.</p>
 <p>Oh, setting everything up will be a pain also. It should probably take around 3 hours. But you only need to do it once.</p>
 
 <h2>Pre-requisites</h2>
@@ -55,7 +55,7 @@ Store multiple cryptocurrencies safely.</p>
   <li>Converting entropy to a "writable" password</li>
   <li>Using this password to generate addresses</li>
 </ol>
-<p>If you use a bad entropy generator (for instance, a compromised computer with a biased pseudo-random number generator) your key won't be as safe as it could. Think it like that: let's say I make a "random" number generator that only uses numbers 1 to 5; or use a predictable way to generate pseudo-random numbers. You might think you're safe but with that information a hacker may be able to break your key in 1 hours instead of 100,000 years.
+<p>If you use a bad entropy generator (for instance, a compromised computer with a biased pseudo-random number generator) your key won't be as safe as it could. Think it this way: let's say I make a "random" number generator that only uses numbers 1 to 5; or use a predictable way to generate pseudo-random numbers. You might think you're safe but with that information a hacker may be able to break your key in 1 hour instead of 100,000 years.
 <p>Now let's say you got a really good source of entropy. But you don't want your key to be <b>m0zbsw-RYR?,*""m*{mSv.8ZgD;+@W</b>, right? You could easily mistake a "0" for an "O", or an "l" for a "1", or miswrite, or misread.</p>
 <p>Following that tutorial you will learn to generate a password like <b>supply-initial-index-copper-can-long-few-enemy-try-submit-reduce-judge-camp-wing-two-sand-spread-dance-cost-food-assume-fat-cash</b> instead, which is way easier to write and less prone to mistakes. And it will provide 237 bits of entropy + your own password (which can easily have 20 bits of entropy). Even with "only" the 237 bits of entropy, the chance of someone finding your password is 1 in 10^71. Even if someone could make a trillion guesses per second it would take longer than the age of the universe.</p>
 <p>But then, if I give you a software in which you type your really good random number in and it spits out this writable password, how can you know I'm not using only 20 bits of entropy from your random number when generating the words, which would make them way less secure than expected?</p>
