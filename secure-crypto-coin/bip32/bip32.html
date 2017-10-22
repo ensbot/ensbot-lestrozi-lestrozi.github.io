@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+  <link rel="dns-prefetch" href="https://assets-cdn.github.com/">
+  <link rel="dns-prefetch" href="https://avatars0.githubusercontent.com/">
+  <link rel="dns-prefetch" href="https://avatars1.githubusercontent.com/">
+  <link rel="dns-prefetch" href="https://avatars2.githubusercontent.com/">
+  <link rel="dns-prefetch" href="https://avatars3.githubusercontent.com/">
+  <link rel="dns-prefetch" href="https://github-cloud.s3.amazonaws.com/">
+  <link rel="dns-prefetch" href="https://user-images.githubusercontent.com/">
+
+
+
+  <link crossorigin="anonymous" href="./bip32_files/frameworks-d7137690e30123bade38abb082ac79f36cc7a105ff92e602405f53b725465cab.css" integrity="sha256-1xN2kOMBI7reOKuwgqx582zHoQX/kuYCQF9TtyVGXKs=" media="all" rel="stylesheet">
+  <link crossorigin="anonymous" href="./bip32_files/github-ab5a3a6c016ff53eb79569c505fc0bacabdf745a400351525182f91f8edb55f1.css" integrity="sha256-q1o6bAFv9T63lWnFBfwLrKvfdFpAA1FSUYL5H47bVfE=" media="all" rel="stylesheet">
+  
+  
+  <link crossorigin="anonymous" href="./bip32_files/site-9628bfea02884cc06cee3aa24062d81f93e06de09ed5bac5557deb155500e539.css" integrity="sha256-lii/6gKITMBs7jqiQGLYH5PgbeCe1brFVX3rFVUA5Tk=" media="all" rel="stylesheet">
+  
+
+  <meta name="viewport" content="width=device-width">
+  
+  <title>bips/bip-0032.mediawiki at master · bitcoin/bips · GitHub</title>
+  <link rel="search" type="application/opensearchdescription+xml" href="https://github.com/opensearch.xml" title="GitHub">
+  <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
+  <meta property="fb:app_id" content="1401488693436528">
+
+    
+    <meta content="https://avatars0.githubusercontent.com/u/528860?s=400&amp;v=4" property="og:image"><meta content="GitHub" property="og:site_name"><meta content="object" property="og:type"><meta content="bitcoin/bips" property="og:title"><meta content="https://github.com/bitcoin/bips" property="og:url"><meta content="bips - Bitcoin Improvement Proposals" property="og:description">
+
+  <link rel="assets" href="https://assets-cdn.github.com/">
+  
+  <meta name="pjax-timeout" content="1000">
+  
+  <meta name="request-id" content="E5BA:33EC:2FA857E:442642B:59ECC272" data-pjax-transient="">
+  
+
+  <meta name="selected-link" value="repo_source" data-pjax-transient="">
+
+  <meta name="google-site-verification" content="KT5gs8h0wvaagLKAVWq8bbeNwnZZK1r1XQysX3xurLU">
+<meta name="google-site-verification" content="ZzhVyEFwb7w3e0-uOTltm8Jsck2F5StVihD0exw2fsA">
+    <meta name="google-analytics" content="UA-3769691-2">
+
+<meta content="collector.githubapp.com" name="octolytics-host"><meta content="github" name="octolytics-app-id"><meta content="https://collector.githubapp.com/github-external/browser_event" name="octolytics-event-url"><meta content="E5BA:33EC:2FA857E:442642B:59ECC272" name="octolytics-dimension-request_id"><meta content="iad" name="octolytics-dimension-region_edge"><meta content="iad" name="octolytics-dimension-region_render">
+<meta content="/&lt;user-name&gt;/&lt;repo-name&gt;/blob/show" data-pjax-transient="true" name="analytics-location">
+
+
+
+
+  <meta class="js-ga-set" name="dimension1" content="Logged Out">
+
+
+  
+
+      <meta name="hostname" content="github.com">
+  <meta name="user-login" content="">
+
+      <meta name="expected-hostname" content="github.com">
+    <meta name="js-proxy-site-detection-payload" content="YjhjMjM3NjE4ODU2MmFjYTk0ZDQ4NzM0YjQ2NGI5ODUzMTQ5NGRmZWQ1ODhiYzA4Y2UyYjZhMDE3ZDE5ZmQ3MXx7InJlbW90ZV9hZGRyZXNzIjoiMTg5LjEwMi4zMS4xNDkiLCJyZXF1ZXN0X2lkIjoiRTVCQTozM0VDOjJGQTg1N0U6NDQyNjQyQjo1OUVDQzI3MiIsInRpbWVzdGFtcCI6MTUwODY4ODQ5OCwiaG9zdCI6ImdpdGh1Yi5jb20ifQ==">
+
+
+  <meta name="html-safe-nonce" content="253dcfdc21d9c934c289fca6b6b97f71bbc4a0b4">
+
+  <meta http-equiv="x-pjax-version" content="0c500e7d5ec9ce18cc069860c71c928b">
+  
+
+      <link href="https://github.com/bitcoin/bips/commits/master.atom" rel="alternate" title="Recent Commits to bips:master" type="application/atom+xml">
+
+  <meta name="description" content="bips - Bitcoin Improvement Proposals">
+  <meta name="go-import" content="github.com/bitcoin/bips git https://github.com/bitcoin/bips.git">
+
+  <meta content="528860" name="octolytics-dimension-user_id"><meta content="bitcoin" name="octolytics-dimension-user_login"><meta content="14531737" name="octolytics-dimension-repository_id"><meta content="bitcoin/bips" name="octolytics-dimension-repository_nwo"><meta content="true" name="octolytics-dimension-repository_public"><meta content="false" name="octolytics-dimension-repository_is_fork"><meta content="14531737" name="octolytics-dimension-repository_network_root_id"><meta content="bitcoin/bips" name="octolytics-dimension-repository_network_root_nwo"><meta content="false" name="octolytics-dimension-repository_explore_github_marketplace_ci_cta_shown">
+
+
+    <link rel="canonical" href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki" data-pjax-transient="">
+
+
+  <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">
+
+  <meta name="browser-errors-url" content="https://api.github.com/_private/browser/errors">
+
+  <link rel="mask-icon" href="https://assets-cdn.github.com/pinned-octocat.svg" color="#000000">
+  <link rel="icon" type="image/x-icon" href="https://assets-cdn.github.com/favicon.ico">
+
+<meta name="theme-color" content="#1e2327">
+
+
+  <meta name="u2f-support" content="true">
+
+  </head>
+
+  <body class="logged-out env-production page-blob">
+    
+
+  <div class="position-relative js-header-wrapper ">
+    <a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#start-of-content" tabindex="1" class="px-2 py-4 show-on-focus js-skip-to-content">Skip to content</a>
+    <div id="js-pjax-loader-bar" class="pjax-loader-bar"><div class="progress"></div></div>
+
+    
+    
+    
+
+
+
+        <header class="Header header-logged-out  position-relative f4 py-3" role="banner">
+  <div class="container-lg d-flex px-3">
+    <div class="d-flex flex-justify-between flex-items-center">
+      <a class="header-logo-invertocat my-0" href="https://github.com/" aria-label="Homepage" data-ga-click="(Logged out) Header, go to homepage, icon:logo-wordmark">
+        <svg aria-hidden="true" class="octicon octicon-mark-github" height="32" version="1.1" viewBox="0 0 16 16" width="32"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+      </a>
+
+    </div>
+
+    <div class="HeaderMenu HeaderMenu--bright d-flex flex-justify-between flex-auto">
+        <nav class="mt-0">
+          <ul class="d-flex list-style-none">
+              <li class="ml-2">
+                <a href="https://github.com/features" class="js-selected-navigation-item HeaderNavlink px-0 py-2 m-0" data-ga-click="Header, click, Nav menu - item:features" data-selected-links="/features /features/project-management /features/code-review /features/project-management /features/integrations /features">
+                  Features
+</a>              </li>
+              <li class="ml-4">
+                <a href="https://github.com/business" class="js-selected-navigation-item HeaderNavlink px-0 py-2 m-0" data-ga-click="Header, click, Nav menu - item:business" data-selected-links="/business /business/security /business/customers /business">
+                  Business
+</a>              </li>
+
+              <li class="ml-4">
+                <a href="https://github.com/explore" class="js-selected-navigation-item HeaderNavlink px-0 py-2 m-0" data-ga-click="Header, click, Nav menu - item:explore" data-selected-links="/explore /trending /trending/developers /integrations /integrations/feature/code /integrations/feature/collaborate /integrations/feature/ship showcases showcases_search showcases_landing /explore">
+                  Explore
+</a>              </li>
+
+              <li class="ml-4">
+                    <a href="https://github.com/marketplace" class="js-selected-navigation-item HeaderNavlink px-0 py-2 m-0" data-ga-click="Header, click, Nav menu - item:marketplace" data-selected-links=" /marketplace">
+                      Marketplace
+</a>              </li>
+              <li class="ml-4">
+                <a href="https://github.com/pricing" class="js-selected-navigation-item HeaderNavlink px-0 py-2 m-0" data-ga-click="Header, click, Nav menu - item:pricing" data-selected-links="/pricing /pricing/developer /pricing/team /pricing/business-hosted /pricing/business-enterprise /pricing">
+                  Pricing
+</a>              </li>
+          </ul>
+        </nav>
+
+      <div class="d-flex">
+          <div class="d-lg-flex flex-items-center mr-3">
+            <div class="header-search scoped-search site-scoped-search js-site-search" role="search">
+  <!-- '"` --><!-- </textarea></xmp> --><form accept-charset="UTF-8" action="https://github.com/bitcoin/bips/search" class="js-site-search-form" data-scoped-search-url="/bitcoin/bips/search" data-unscoped-search-url="/search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"></div>
+    <label class="form-control header-search-wrapper js-chromeless-input-container">
+        <a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki" class="header-search-scope no-underline">This repository</a>
+      <input type="text" class="form-control header-search-input js-site-search-focus js-site-search-field is-clearable" data-hotkey="s" name="q" value="" placeholder="Search" aria-label="Search this repository" data-unscoped-placeholder="Search GitHub" data-scoped-placeholder="Search" autocapitalize="off">
+        <input type="hidden" class="js-site-search-type-field" name="type">
+    </label>
+</form></div>
+
+          </div>
+
+        <span class="d-inline-block">
+            <div class="HeaderNavlink px-0 py-2 m-0">
+              <a class="text-bold text-white no-underline" href="https://github.com/login?return_to=%2Fbitcoin%2Fbips%2Fblob%2Fmaster%2Fbip-0032.mediawiki" data-ga-click="(Logged out) Header, clicked Sign in, text:sign-in">Sign in</a>
+                <span class="text-gray">or</span>
+                <a class="text-bold text-white no-underline" href="https://github.com/join?source=header-repo" data-ga-click="(Logged out) Header, clicked Sign up, text:sign-up">Sign up</a>
+            </div>
+        </span>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+  </div>
+
+  <div id="start-of-content" class="show-on-focus"></div>
+
+    <div id="js-flash-container">
+</div>
+
+
+
+  <div role="main">
+        <div itemscope="" itemtype="http://schema.org/SoftwareSourceCode">
+    <div id="js-repo-pjax-container" data-pjax-container="">
+      
+
+
+
+  
+
+
+
+    <div class="pagehead repohead instapaper_ignore readability-menu experiment-repo-nav ">
+      <div class="repohead-details-container clearfix container ">
+
+        <ul class="pagehead-actions">
+  <li>
+      <a href="https://github.com/login?return_to=%2Fbitcoin%2Fbips" class="btn btn-sm btn-with-count tooltipped tooltipped-n" aria-label="You must be signed in to watch a repository" rel="nofollow">
+    <svg aria-hidden="true" class="octicon octicon-eye" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"></path></svg>
+    Watch
+  </a>
+  <a class="social-count" href="https://github.com/bitcoin/bips/watchers" aria-label="347 users are watching this repository">
+    347
+  </a>
+
+  </li>
+
+  <li>
+      <a href="https://github.com/login?return_to=%2Fbitcoin%2Fbips" class="btn btn-sm btn-with-count tooltipped tooltipped-n" aria-label="You must be signed in to star a repository" rel="nofollow">
+    <svg aria-hidden="true" class="octicon octicon-star" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74z"></path></svg>
+    Star
+  </a>
+
+    <a class="social-count js-social-count" href="https://github.com/bitcoin/bips/stargazers" aria-label="1355 users starred this repository">
+      1,355
+    </a>
+
+  </li>
+
+  <li>
+      <a href="https://github.com/login?return_to=%2Fbitcoin%2Fbips" class="btn btn-sm btn-with-count tooltipped tooltipped-n" aria-label="You must be signed in to fork a repository" rel="nofollow">
+        <svg aria-hidden="true" class="octicon octicon-repo-forked" height="16" version="1.1" viewBox="0 0 10 16" width="10"><path fill-rule="evenodd" d="M8 1a1.993 1.993 0 0 0-1 3.72V6L5 8 3 6V4.72A1.993 1.993 0 0 0 2 1a1.993 1.993 0 0 0-1 3.72V6.5l3 3v1.78A1.993 1.993 0 0 0 5 15a1.993 1.993 0 0 0 1-3.72V9.5l3-3V4.72A1.993 1.993 0 0 0 8 1zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3 10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3-10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg>
+        Fork
+      </a>
+
+    <a href="https://github.com/bitcoin/bips/network" class="social-count" aria-label="837 users forked this repository">
+      837
+    </a>
+  </li>
+</ul>
+
+        <h1 class="public ">
+  <svg aria-hidden="true" class="octicon octicon-repo" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"></path></svg>
+  <span class="author" itemprop="author"><a href="https://github.com/bitcoin" class="url fn" rel="author">bitcoin</a></span><!--
+--><span class="path-divider">/</span><!--
+--><strong itemprop="name"><a href="https://github.com/bitcoin/bips" data-pjax="#js-repo-pjax-container">bips</a></strong>
+
+</h1>
+
+      </div>
+      
+<nav class="reponav js-repo-nav js-sidenav-container-pjax container" itemscope="" itemtype="http://schema.org/BreadcrumbList" role="navigation" data-pjax="#js-repo-pjax-container">
+
+  <span itemscope="" itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+    <a href="https://github.com/bitcoin/bips" class="js-selected-navigation-item selected reponav-item" data-hotkey="g c" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches repo_packages /bitcoin/bips" itemprop="url">
+      <svg aria-hidden="true" class="octicon octicon-code" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M9.5 3L8 4.5 11.5 8 8 11.5 9.5 13 14 8 9.5 3zm-5 0L0 8l4.5 5L6 11.5 2.5 8 6 4.5 4.5 3z"></path></svg>
+      <span itemprop="name">Code</span>
+      <meta itemprop="position" content="1">
+</a>  </span>
+
+
+  <span itemscope="" itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+    <a href="https://github.com/bitcoin/bips/pulls" class="js-selected-navigation-item reponav-item" data-hotkey="g p" data-selected-links="repo_pulls /bitcoin/bips/pulls" itemprop="url">
+      <svg aria-hidden="true" class="octicon octicon-git-pull-request" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M11 11.28V5c-.03-.78-.34-1.47-.94-2.06C9.46 2.35 8.78 2.03 8 2H7V0L4 3l3 3V4h1c.27.02.48.11.69.31.21.2.3.42.31.69v6.28A1.993 1.993 0 0 0 10 15a1.993 1.993 0 0 0 1-3.72zm-1 2.92c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zM4 3c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v6.56A1.993 1.993 0 0 0 2 15a1.993 1.993 0 0 0 1-3.72V4.72c.59-.34 1-.98 1-1.72zm-.8 10c0 .66-.55 1.2-1.2 1.2-.65 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg>
+      <span itemprop="name">Pull requests</span>
+      <span class="Counter">37</span>
+      <meta itemprop="position" content="3">
+</a>  </span>
+
+    <a href="https://github.com/bitcoin/bips/projects" class="js-selected-navigation-item reponav-item" data-hotkey="g b" data-selected-links="repo_projects new_repo_project repo_project /bitcoin/bips/projects">
+      <svg aria-hidden="true" class="octicon octicon-project" height="16" version="1.1" viewBox="0 0 15 16" width="15"><path fill-rule="evenodd" d="M10 12h3V2h-3v10zm-4-2h3V2H6v8zm-4 4h3V2H2v12zm-1 1h13V1H1v14zM14 0H1a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h13a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1z"></path></svg>
+      Projects
+      <span class="Counter">0</span>
+</a>
+    <a href="https://github.com/bitcoin/bips/wiki" class="js-selected-navigation-item reponav-item" data-hotkey="g w" data-selected-links="repo_wiki /bitcoin/bips/wiki">
+      <svg aria-hidden="true" class="octicon octicon-book" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M3 5h4v1H3V5zm0 3h4V7H3v1zm0 2h4V9H3v1zm11-5h-4v1h4V5zm0 2h-4v1h4V7zm0 2h-4v1h4V9zm2-6v9c0 .55-.45 1-1 1H9.5l-1 1-1-1H2c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h5.5l1 1 1-1H15c.55 0 1 .45 1 1zm-8 .5L7.5 3H2v9h6V3.5zm7-.5H9.5l-.5.5V12h6V3z"></path></svg>
+      Wiki
+</a>
+
+  <a href="https://github.com/bitcoin/bips/pulse" class="js-selected-navigation-item reponav-item" data-selected-links="repo_graphs repo_contributors dependency_graph pulse /bitcoin/bips/pulse">
+    <svg aria-hidden="true" class="octicon octicon-graph" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M16 14v1H0V0h1v14h15zM5 13H3V8h2v5zm4 0H7V3h2v10zm4 0h-2V6h2v7z"></path></svg>
+    Insights
+</a>
+
+</nav>
+
+
+    </div>
+
+<div class="container new-discussion-timeline experiment-repo-nav">
+  <div class="repository-content">
+
+    
+  <a href="https://github.com/bitcoin/bips/blob/21da438ad50ad9fb0bb46fb4ae4a1bf6addb16af/bip-0032.mediawiki" class="d-none js-permalink-shortcut" data-hotkey="y">Permalink</a>
+
+  <!-- blob contrib key: blob_contributors:v21:6420e8792f83c6b91dd0bc9a2ee30888 -->
+
+  <div class="file-navigation js-zeroclipboard-container">
+    
+<div class="select-menu branch-select-menu js-menu-container js-select-menu float-left">
+  <button class=" btn btn-sm select-menu-button js-menu-target css-truncate" data-hotkey="w" type="button" aria-label="Switch branches or tags" aria-expanded="false" aria-haspopup="true">
+      <i>Branch:</i>
+      <span class="js-select-button css-truncate-target">master</span>
+  </button>
+
+  <div class="select-menu-modal-holder js-menu-content js-navigation-container" data-pjax="">
+
+    <div class="select-menu-modal">
+      <div class="select-menu-header">
+        <svg aria-label="Close" class="octicon octicon-x js-menu-close" height="16" role="img" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path></svg>
+        <span class="select-menu-title">Switch branches/tags</span>
+      </div>
+
+      <div class="select-menu-filters">
+        <div class="select-menu-text-filter">
+          <input type="text" aria-label="Filter branches/tags" id="context-commitish-filter-field" class="form-control js-filterable-field js-navigation-enable" placeholder="Filter branches/tags">
+        </div>
+        <div class="select-menu-tabs">
+          <ul>
+            <li class="select-menu-tab">
+              <a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#" data-tab-filter="branches" data-filter-placeholder="Filter branches/tags" class="js-select-menu-tab" role="tab">Branches</a>
+            </li>
+            <li class="select-menu-tab">
+              <a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#" data-tab-filter="tags" data-filter-placeholder="Find a tag…" class="js-select-menu-tab" role="tab">Tags</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="branches" role="menu">
+
+        <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
+
+
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/bitcoin/bips/blob/2015_12_bip1/bip-0032.mediawiki" data-name="2015_12_bip1" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target js-select-menu-filter-text">
+                2015_12_bip1
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/bitcoin/bips/blob/20160201_status_updates_d2f/bip-0032.mediawiki" data-name="20160201_status_updates_d2f" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target js-select-menu-filter-text">
+                20160201_status_updates_d2f
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/bitcoin/bips/blob/20170314-comments/bip-0032.mediawiki" data-name="20170314-comments" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target js-select-menu-filter-text">
+                20170314-comments
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open selected" href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki" data-name="master" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target js-select-menu-filter-text">
+                master
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/bitcoin/bips/blob/staging/bip-0032.mediawiki" data-name="staging" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target js-select-menu-filter-text">
+                staging
+              </span>
+            </a>
+        </div>
+
+          <div class="select-menu-no-results">Nothing to show</div>
+      </div>
+
+      <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="tags">
+        <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
+
+
+        </div>
+
+        <div class="select-menu-no-results">Nothing to show</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+    <div class="BtnGroup float-right">
+      <a href="https://github.com/bitcoin/bips/find/master" class="js-pjax-capture-input btn btn-sm BtnGroup-item" data-pjax="" data-hotkey="t">
+        Find file
+      </a>
+      <button aria-label="Copy file path to clipboard" class="js-zeroclipboard btn btn-sm BtnGroup-item tooltipped tooltipped-s" data-copied-hint="Copied!" type="button">Copy path</button>
+    </div>
+    <div class="breadcrumb js-zeroclipboard-target">
+      <span class="repo-root js-repo-root"><span class="js-path-segment"><a href="https://github.com/bitcoin/bips"><span>bips</span></a></span></span><span class="separator">/</span><strong class="final-path">bip-0032.mediawiki</strong>
+    </div>
+  </div>
+
+
+  
+  <div class="commit-tease">
+      <span class="float-right">
+        <a class="commit-tease-sha" href="https://github.com/bitcoin/bips/commit/10798af90d3da3b4b3e4ff05ef79dec3ffd121c6" data-pjax="">
+          10798af
+        </a>
+        <relative-time datetime="2017-09-24T18:01:14Z" title="Sep 24, 2017, 3:01 PM GMT-3">28 days ago</relative-time>
+      </span>
+      <div>
+        <img alt="@lsaether" class="avatar" height="20" src="./bip32_files/25539605" width="20">
+        <a href="https://github.com/lsaether" class="user-mention" rel="contributor">lsaether</a>
+          <a href="https://github.com/bitcoin/bips/commit/10798af90d3da3b4b3e4ff05ef79dec3ffd121c6" class="message" data-pjax="true" title="typo &#39;ECSDA&#39; changed to correct &#39;ECDSA&#39;
+
+Elliptic curve digital signature algorithm">typo 'ECSDA' changed to correct 'ECDSA'</a>
+      </div>
+
+    <div class="commit-tease-contributors">
+      <button type="button" class="btn-link muted-link contributors-toggle" data-facebox="#blob_contributors_box">
+        <strong>26</strong>
+         contributors
+      </button>
+          <a class="avatar-link tooltipped tooltipped-s" aria-label="luke-jr" href="https://github.com/bitcoin/bips/commits/master/bip-0032.mediawiki?author=luke-jr"><img alt="@luke-jr" class="avatar" height="20" src="./bip32_files/1095675" width="20"> </a>
+    <a class="avatar-link tooltipped tooltipped-s" aria-label="laanwj" href="https://github.com/bitcoin/bips/commits/master/bip-0032.mediawiki?author=laanwj"><img alt="@laanwj" class="avatar" height="20" src="./bip32_files/126646" width="20"> </a>
+    <a class="avatar-link tooltipped tooltipped-s" aria-label="petertodd" href="https://github.com/bitcoin/bips/commits/master/bip-0032.mediawiki?author=petertodd"><img alt="@petertodd" class="avatar" height="20" src="./bip32_files/7042" width="20"> </a>
+    <a class="avatar-link tooltipped tooltipped-s" aria-label="sipa" href="https://github.com/bitcoin/bips/commits/master/bip-0032.mediawiki?author=sipa"><img alt="@sipa" class="avatar" height="20" src="./bip32_files/548488" width="20"> </a>
+    <a class="avatar-link tooltipped tooltipped-s" aria-label="jonasschnelli" href="https://github.com/bitcoin/bips/commits/master/bip-0032.mediawiki?author=jonasschnelli"><img alt="@jonasschnelli" class="avatar" height="20" src="./bip32_files/178464" width="20"> </a>
+    <a class="avatar-link tooltipped tooltipped-s" aria-label="iancoleman" href="https://github.com/bitcoin/bips/commits/master/bip-0032.mediawiki?author=iancoleman"><img alt="@iancoleman" class="avatar" height="20" src="./bip32_files/1281387" width="20"> </a>
+    <a class="avatar-link tooltipped tooltipped-s" aria-label="zdexter" href="https://github.com/bitcoin/bips/commits/master/bip-0032.mediawiki?author=zdexter"><img alt="@zdexter" class="avatar" height="20" src="./bip32_files/588935" width="20"> </a>
+    <a class="avatar-link tooltipped tooltipped-s" aria-label="jesion" href="https://github.com/bitcoin/bips/commits/master/bip-0032.mediawiki?author=jesion"><img alt="@jesion" class="avatar" height="20" src="./bip32_files/15941330" width="20"> </a>
+    <a class="avatar-link tooltipped tooltipped-s" aria-label="wink" href="https://github.com/bitcoin/bips/commits/master/bip-0032.mediawiki?author=wink"><img alt="@wink" class="avatar" height="20" src="./bip32_files/5205" width="20"> </a>
+    <a class="avatar-link tooltipped tooltipped-s" aria-label="timthelion" href="https://github.com/bitcoin/bips/commits/master/bip-0032.mediawiki?author=timthelion"><img alt="@timthelion" class="avatar" height="20" src="./bip32_files/1391608" width="20"> </a>
+    <a class="avatar-link tooltipped tooltipped-s" aria-label="jurov" href="https://github.com/bitcoin/bips/commits/master/bip-0032.mediawiki?author=jurov"><img alt="@jurov" class="avatar" height="20" src="./bip32_files/1847390" width="20"> </a>
+    <a class="avatar-link tooltipped tooltipped-s" aria-label="oleganza" href="https://github.com/bitcoin/bips/commits/master/bip-0032.mediawiki?author=oleganza"><img alt="@oleganza" class="avatar" height="20" src="./bip32_files/698" width="20"> </a>
+    <a class="avatar-link tooltipped tooltipped-s" aria-label="olalonde" href="https://github.com/bitcoin/bips/commits/master/bip-0032.mediawiki?author=olalonde"><img alt="@olalonde" class="avatar" height="20" src="./bip32_files/416585" width="20"> </a>
+    <a class="avatar-link tooltipped tooltipped-s" aria-label="np" href="https://github.com/bitcoin/bips/commits/master/bip-0032.mediawiki?author=np"><img alt="@np" class="avatar" height="20" src="./bip32_files/5548" width="20"> </a>
+    <a class="avatar-link tooltipped tooltipped-s" aria-label="NicolasDorier" href="https://github.com/bitcoin/bips/commits/master/bip-0032.mediawiki?author=NicolasDorier"><img alt="@NicolasDorier" class="avatar" height="20" src="./bip32_files/3020646" width="20"> </a>
+    <a class="avatar-link tooltipped tooltipped-s" aria-label="maraoz" href="https://github.com/bitcoin/bips/commits/master/bip-0032.mediawiki?author=maraoz"><img alt="@maraoz" class="avatar" height="20" src="./bip32_files/287189" width="20"> </a>
+    <a class="avatar-link tooltipped tooltipped-s" aria-label="lsaether" href="https://github.com/bitcoin/bips/commits/master/bip-0032.mediawiki?author=lsaether"><img alt="@lsaether" class="avatar" height="20" src="./bip32_files/25539605" width="20"> </a>
+    <a class="avatar-link tooltipped tooltipped-s" aria-label="jmcorgan" href="https://github.com/bitcoin/bips/commits/master/bip-0032.mediawiki?author=jmcorgan"><img alt="@jmcorgan" class="avatar" height="20" src="./bip32_files/1492956" width="20"> </a>
+    <a class="avatar-link tooltipped tooltipped-s" aria-label="ethernomad" href="https://github.com/bitcoin/bips/commits/master/bip-0032.mediawiki?author=ethernomad"><img alt="@ethernomad" class="avatar" height="20" src="./bip32_files/161566" width="20"> </a>
+    <a class="avatar-link tooltipped tooltipped-s" aria-label="CodeShark" href="https://github.com/bitcoin/bips/commits/master/bip-0032.mediawiki?author=CodeShark"><img alt="@CodeShark" class="avatar" height="20" src="./bip32_files/894059" width="20"> </a>
+    <a class="avatar-link tooltipped tooltipped-s" aria-label="MeshCollider" href="https://github.com/bitcoin/bips/commits/master/bip-0032.mediawiki?author=MeshCollider"><img alt="@MeshCollider" class="avatar" height="20" src="./bip32_files/3211283" width="20"> </a>
+    <a class="avatar-link tooltipped tooltipped-s" aria-label="davecgh" href="https://github.com/bitcoin/bips/commits/master/bip-0032.mediawiki?author=davecgh"><img alt="@davecgh" class="avatar" height="20" src="./bip32_files/2115102" width="20"> </a>
+    <a class="avatar-link tooltipped tooltipped-s" aria-label="harding" href="https://github.com/bitcoin/bips/commits/master/bip-0032.mediawiki?author=harding"><img alt="@harding" class="avatar" height="20" src="./bip32_files/61096" width="20"> </a>
+    <a class="avatar-link tooltipped tooltipped-s" aria-label="sarchar" href="https://github.com/bitcoin/bips/commits/master/bip-0032.mediawiki?author=sarchar"><img alt="@sarchar" class="avatar" height="20" src="./bip32_files/4928176" width="20"> </a>
+    <a class="avatar-link tooltipped tooltipped-s" aria-label="wemeetagain" href="https://github.com/bitcoin/bips/commits/master/bip-0032.mediawiki?author=wemeetagain"><img alt="@wemeetagain" class="avatar" height="20" src="./bip32_files/1348242" width="20"> </a>
+    <a class="avatar-link tooltipped tooltipped-s" aria-label="apoelstra" href="https://github.com/bitcoin/bips/commits/master/bip-0032.mediawiki?author=apoelstra"><img alt="@apoelstra" class="avatar" height="20" src="./bip32_files/1351933" width="20"> </a>
+
+
+    </div>
+
+    <div id="blob_contributors_box" style="display:none">
+      <h2 class="facebox-header" data-facebox-id="facebox-header">Users who have contributed to this file</h2>
+      <ul class="facebox-user-list" data-facebox-id="facebox-description">
+          <li class="facebox-user-list-item">
+            <img alt="@luke-jr" height="24" src="./bip32_files/1095675(1)" width="24">
+            <a href="https://github.com/luke-jr">luke-jr</a>
+          </li>
+          <li class="facebox-user-list-item">
+            <img alt="@laanwj" height="24" src="./bip32_files/126646(1)" width="24">
+            <a href="https://github.com/laanwj">laanwj</a>
+          </li>
+          <li class="facebox-user-list-item">
+            <img alt="@petertodd" height="24" src="./bip32_files/7042(1)" width="24">
+            <a href="https://github.com/petertodd">petertodd</a>
+          </li>
+          <li class="facebox-user-list-item">
+            <img alt="@sipa" height="24" src="./bip32_files/548488(1)" width="24">
+            <a href="https://github.com/sipa">sipa</a>
+          </li>
+          <li class="facebox-user-list-item">
+            <img alt="@jonasschnelli" height="24" src="./bip32_files/178464(1)" width="24">
+            <a href="https://github.com/jonasschnelli">jonasschnelli</a>
+          </li>
+          <li class="facebox-user-list-item">
+            <img alt="@iancoleman" height="24" src="./bip32_files/1281387(1)" width="24">
+            <a href="https://github.com/iancoleman">iancoleman</a>
+          </li>
+          <li class="facebox-user-list-item">
+            <img alt="@zdexter" height="24" src="./bip32_files/588935(1)" width="24">
+            <a href="https://github.com/zdexter">zdexter</a>
+          </li>
+          <li class="facebox-user-list-item">
+            <img alt="@jesion" height="24" src="./bip32_files/15941330(1)" width="24">
+            <a href="https://github.com/jesion">jesion</a>
+          </li>
+          <li class="facebox-user-list-item">
+            <img alt="@wink" height="24" src="./bip32_files/5205(1)" width="24">
+            <a href="https://github.com/wink">wink</a>
+          </li>
+          <li class="facebox-user-list-item">
+            <img alt="@timthelion" height="24" src="./bip32_files/1391608(1)" width="24">
+            <a href="https://github.com/timthelion">timthelion</a>
+          </li>
+          <li class="facebox-user-list-item">
+            <img alt="@jurov" height="24" src="./bip32_files/1847390(1)" width="24">
+            <a href="https://github.com/jurov">jurov</a>
+          </li>
+          <li class="facebox-user-list-item">
+            <img alt="@oleganza" height="24" src="./bip32_files/698(1)" width="24">
+            <a href="https://github.com/oleganza">oleganza</a>
+          </li>
+          <li class="facebox-user-list-item">
+            <img alt="@olalonde" height="24" src="./bip32_files/416585(1)" width="24">
+            <a href="https://github.com/olalonde">olalonde</a>
+          </li>
+          <li class="facebox-user-list-item">
+            <img alt="@np" height="24" src="./bip32_files/5548(1)" width="24">
+            <a href="https://github.com/np">np</a>
+          </li>
+          <li class="facebox-user-list-item">
+            <img alt="@NicolasDorier" height="24" src="./bip32_files/3020646(1)" width="24">
+            <a href="https://github.com/NicolasDorier">NicolasDorier</a>
+          </li>
+          <li class="facebox-user-list-item">
+            <img alt="@maraoz" height="24" src="./bip32_files/287189(1)" width="24">
+            <a href="https://github.com/maraoz">maraoz</a>
+          </li>
+          <li class="facebox-user-list-item">
+            <img alt="@lsaether" height="24" src="./bip32_files/25539605(1)" width="24">
+            <a href="https://github.com/lsaether">lsaether</a>
+          </li>
+          <li class="facebox-user-list-item">
+            <img alt="@jmcorgan" height="24" src="./bip32_files/1492956(1)" width="24">
+            <a href="https://github.com/jmcorgan">jmcorgan</a>
+          </li>
+          <li class="facebox-user-list-item">
+            <img alt="@ethernomad" height="24" src="./bip32_files/161566(1)" width="24">
+            <a href="https://github.com/ethernomad">ethernomad</a>
+          </li>
+          <li class="facebox-user-list-item">
+            <img alt="@CodeShark" height="24" src="./bip32_files/894059(1)" width="24">
+            <a href="https://github.com/CodeShark">CodeShark</a>
+          </li>
+          <li class="facebox-user-list-item">
+            <img alt="@MeshCollider" height="24" src="./bip32_files/3211283(1)" width="24">
+            <a href="https://github.com/MeshCollider">MeshCollider</a>
+          </li>
+          <li class="facebox-user-list-item">
+            <img alt="@davecgh" height="24" src="./bip32_files/2115102(1)" width="24">
+            <a href="https://github.com/davecgh">davecgh</a>
+          </li>
+          <li class="facebox-user-list-item">
+            <img alt="@harding" height="24" src="./bip32_files/61096(1)" width="24">
+            <a href="https://github.com/harding">harding</a>
+          </li>
+          <li class="facebox-user-list-item">
+            <img alt="@sarchar" height="24" src="./bip32_files/4928176(1)" width="24">
+            <a href="https://github.com/sarchar">sarchar</a>
+          </li>
+          <li class="facebox-user-list-item">
+            <img alt="@wemeetagain" height="24" src="./bip32_files/1348242(1)" width="24">
+            <a href="https://github.com/wemeetagain">wemeetagain</a>
+          </li>
+          <li class="facebox-user-list-item">
+            <img alt="@apoelstra" height="24" src="./bip32_files/1351933(1)" width="24">
+            <a href="https://github.com/apoelstra">apoelstra</a>
+          </li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="file">
+    <div class="file-header">
+  <div class="file-actions">
+
+    <div class="BtnGroup">
+      <a href="https://github.com/bitcoin/bips/raw/master/bip-0032.mediawiki" class="btn btn-sm BtnGroup-item" id="raw-url">Raw</a>
+        <a href="https://github.com/bitcoin/bips/blame/master/bip-0032.mediawiki" class="btn btn-sm js-update-url-with-hash BtnGroup-item" data-hotkey="b">Blame</a>
+      <a href="https://github.com/bitcoin/bips/commits/master/bip-0032.mediawiki" class="btn btn-sm BtnGroup-item" rel="nofollow">History</a>
+    </div>
+
+
+        <button type="button" class="btn-octicon disabled tooltipped tooltipped-nw" aria-label="You must be signed in to make or propose changes">
+          <svg aria-hidden="true" class="octicon octicon-pencil" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M0 12v3h3l8-8-3-3-8 8zm3 2H1v-2h1v1h1v1zm10.3-9.3L12 6 9 3l1.3-1.3a.996.996 0 0 1 1.41 0l1.59 1.59c.39.39.39 1.02 0 1.41z"></path></svg>
+        </button>
+        <button type="button" class="btn-octicon btn-octicon-danger disabled tooltipped tooltipped-nw" aria-label="You must be signed in to make or propose changes">
+          <svg aria-hidden="true" class="octicon octicon-trashcan" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M11 2H9c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1H2c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1v9c0 .55.45 1 1 1h7c.55 0 1-.45 1-1V5c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm-1 12CuVTRMPpzjgzszyWNgsPTxVdehYHDMKHzm1-10H2V3h9v1z"></path></svg>
+        </button>
+  </div>
+
+  <div class="file-info">
+      307 lines (209 sloc)
+      <span class="file-info-divider"></span>
+    25.3 KB
+  </div>
+</div>
+
+    
+  <div id="readme" class="readme blob instapaper_body">
+    <article class="markdown-body entry-content" itemprop="text">
+<p>RECENT CHANGES:
+
+
+
+
+
+
+</p><ul><li>(24 Feb 2017) Added test vectors for hardened derivation with leading zeros</li><li>(16 Apr 2013) Added private derivation for i ≥ 0x80000000 (less risk of parent private key leakage)</li><li>(30 Apr 2013) Switched from multiplication by I<sub>L</sub> to addition of I<sub>L</sub> (faster, easier implementation)</li><li>(25 May 2013) Added test vectors</li><li>(15 Jan 2014) Rename keys with index ≥ 0x80000000 to hardened keys, and add explicit conversion functions.</li></ul>
+<pre>  BIP: 32
+  Layer: Applications
+  Title: Hierarchical Deterministic Wallets
+  Author: Pieter Wuille &lt;pieter.wuille@gmail.com&gt;
+  Comments-Summary: No comments yet.
+  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0032
+  Status: Final
+  Type: Informational
+  Created: 2012-02-11
+  License: BSD-2-Clause
+</pre>
+<p></p>
+<p></p><table id="user-content-toc" summary="Contents"><tbody><tr><td><div id="user-content-toctitle"><h2><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#table-of-contents" aria-hidden="true" class="anchor" id="user-content-table-of-contents"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Table of Contents</h2></div><ul><ul><li><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Abstract">Abstract</a></li><li><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Copyright">Copyright</a></li><li><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Motivation">Motivation</a></li><li><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Specification_Key_derivation">Specification: Key derivation</a><ul><li><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Conventions">Conventions</a></li><li><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Extended_keys">Extended keys</a></li><li><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Child_key_derivation_CKD_functions">Child key derivation (CKD) functions</a><ul><li><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Private_parent_key_rarr_private_child_key">Private parent key → private child key</a></li><li><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Public_parent_key_rarr_public_child_key">Public parent key → public child key</a></li><li><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Private_parent_key_rarr_public_child_key">Private parent key → public child key</a></li><li><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Public_parent_key_rarr_private_child_key">Public parent key → private child key</a></li></ul></li><li><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#The_key_tree">The key tree</a></li><li><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Key_identifiers">Key identifiers</a></li><li><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Serialization_format">Serialization format</a></li><li><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Master_key_generation">Master key generation</a></li></ul></li><li><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Specification_Wallet_structure">Specification: Wallet structure</a><ul><li><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#The_default_wallet_layout">The default wallet layout</a></li><li><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Use_cases">Use cases</a><ul><li><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Full_wallet_sharing_m">Full wallet sharing: m</a></li><li><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Audits_Nm">Audits: N(m/*)</a></li><li><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Peroffice_balances_misubHsub">Per-office balances: m/i<sub>H</sub></a></li><li><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Recurrent_businesstobusiness_transactions_NmisubHsub0">Recurrent business-to-business transactions: N(m/i<sub>H</sub>/0)</a></li><li><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Unsecure_money_receiver_NmisubHsub0">Unsecure money receiver: N(m/i<sub>H</sub>/0)</a></li></ul></li></ul></li><li><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Compatibility">Compatibility</a></li><li><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Security">Security</a><ul><li><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Implications">Implications</a></li></ul></li><li><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Test_Vectors">Test Vectors</a><ul><li><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Test_vector_1">Test vector 1</a></li><li><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Test_vector_2">Test vector 2</a></li><li><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Test_vector_3">Test vector 3</a></li></ul></li><li><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Implementations">Implementations</a></li><li><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#Acknowledgements">Acknowledgements</a></li></ul></ul></td></tr></tbody></table>
+<p></p><h2><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#abstract" aria-hidden="true" class="anchor" id="user-content-abstract"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-Abstract"></a>Abstract</h2>
+
+
+
+<p>This document describes hierarchical deterministic wallets (or "HD Wallets"): wallets which can be shared partially or entirely with different systems, each with or without the ability to spend coins.
+</p>
+<p>The specification is intended to set a standard for deterministic wallets that can be interchanged between different clients. Although the wallets described here have many features, not all are required by supporting clients.
+</p>
+<p>The specification consists of two parts. In a first part, a system for deriving a tree of keypairs from a single seed is presented. The second part demonstrates how to build a wallet structure on top of such a tree.
+</p>
+
+<h2><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#copyright" aria-hidden="true" class="anchor" id="user-content-copyright"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-Copyright"></a>Copyright</h2>
+
+
+
+<p>This BIP is licensed under the 2-clause BSD license.
+</p>
+
+<h2><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#motivation" aria-hidden="true" class="anchor" id="user-content-motivation"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-Motivation"></a>Motivation</h2>
+
+
+
+<p>The Bitcoin reference client uses randomly generated keys. In order to avoid the necessity for a backup after every transaction, (by default) 100 keys are cached in a pool of reserve keys. Still, these wallets are not intended to be shared and used on several systems simultaneously. They support hiding their private keys by using the wallet encrypt feature and not sharing the password, but such "neutered" wallets lose the power to generate public keys as well.
+</p>
+<p>Deterministic wallets do not require such frequent backups, and elliptic curve mathematics permit schemes where one can calculate the public keys without revealing the private keys. This permits for example a webshop business to let its webserver generate fresh addresses (public key hashes) for each order or for each customer, without giving the webserver access to the corresponding private keys (which are required for spending the received funds).
+</p>
+<p>However, deterministic wallets typically consist of a single "chain" of keypairs. The fact that there is only one chain means that sharing a wallet happens on an all-or-nothing basis. However, in some cases one only wants some (public) keys to be shared and recoverable. In the example of a webshop, the webserver does not need access to all public keys of the merchant's wallet; only to those addresses which are used to receive customer's payments, and not for example the change addresses that are generated when the merchant spends money. Hierarchical deterministic wallets allow such selective sharing by supporting multiple keypair chains, derived from a single root.
+</p>
+
+<h2><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#specification-key-derivation" aria-hidden="true" class="anchor" id="user-content-specification-key-derivation"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-Specification_Key_derivation"></a>Specification: Key derivation</h2>
+
+
+
+
+<h3><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#conventions" aria-hidden="true" class="anchor" id="user-content-conventions"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-Conventions"></a>Conventions</h3>
+
+
+
+<p>In the rest of this text we will assume the public key cryptography used in Bitcoin, namely elliptic curve cryptography using the field and curve parameters defined by secp256k1 (<a href="http://www.secg.org/sec2-v2.pdf">http://www.secg.org/sec2-v2.pdf</a>). Variables below are either:
+
+
+
+
+</p><ul><li>Integers modulo the order of the curve (referred to as n).</li><li>Coordinates of points on the curve.</li><li>Byte sequences.</li></ul>
+Addition (+) of two coordinate pair is defined as application of the EC group operation.
+Concatenation (||) is the operation of appending one byte sequence onto another.
+<p></p>
+<p>As standard conversion functions, we assume:
+
+
+
+
+
+
+
+
+</p><ul><li>point(p): returns the coordinate pair resulting from EC point multiplication (repeated application of the EC group operation) of the secp256k1 base point with the integer p.</li><li>ser<sub>32</sub>(i): serialize a 32-bit unsigned integer i as a 4-byte sequence, most significant byte first.</li><li>ser<sub>256</sub>(p): serializes the integer p as a 32-byte sequence, most significant byte first.</li><li>ser<sub>P</sub>(P): serializes the coordinate pair P = (x,y) as a byte sequence using SEC1's compressed form: (0x02 or 0x03) || ser<sub>256</sub>(x), where the header byte depends on the parity of the omitted y coordinate.</li><li>parse<sub>256</sub>(p): interprets a 32-byte sequence as a 256-bit number, most significant byte first.</li></ul>
+<p></p><h3><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#extended-keys" aria-hidden="true" class="anchor" id="user-content-extended-keys"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-Extended_keys"></a>Extended keys</h3>
+
+
+
+<p>In what follows, we will define a function that derives a number of child keys from a parent key. In order to prevent these from depending solely on the key itself, we extend both private and public keys first with an extra 256 bits of entropy. This extension, called the chain code, is identical for corresponding private and public keys, and consists of 32 bytes.
+</p>
+<p>We represent an extended private key as (k, c), with k the normal private key, and c the chain code. An extended public key is represented as (K, c), with K = point(k) and c the chain code.
+</p>
+<p>Each extended key has 2<sup>31</sup> normal child keys, and 2<sup>31</sup> hardened child keys. Each of these child keys has an index. The normal child keys use indices 0 through 2<sup>31</sup>-1. The hardened child keys use indices 2<sup>31</sup> through 2<sup>32</sup>-1. To ease notation for hardened key indices, a number i<sub>H</sub> represents i+2<sup>31</sup>.
+</p>
+
+<h3><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#child-key-derivation-ckd-functions" aria-hidden="true" class="anchor" id="user-content-child-key-derivation-ckd-functions"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-Child_key_derivation_CKD_functions"></a>Child key derivation (CKD) functions</h3>
+
+
+
+<p>Given a parent extended key and an index i, it is possible to compute the corresponding child extended key. The algorithm to do so depends on whether the child is a hardened key or not (or, equivalently, whether i ≥ 2<sup>31</sup>), and whether we're talking about private or public keys.
+</p>
+
+<h4><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#private-parent-key--private-child-key" aria-hidden="true" class="anchor" id="user-content-private-parent-key--private-child-key"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-Private_parent_key_rarr_private_child_key"></a>Private parent key → private child key</h4>
+
+
+
+<p>The function CKDpriv((k<sub>par</sub>, c<sub>par</sub>), i) → (k<sub>i</sub>, c<sub>i</sub>) computes a child extended private key from the parent extended private key:
+
+
+
+
+
+
+
+
+</p><ul><li>Check whether i ≥ 2<sup>31</sup> (whether the child is a hardened key).<ul><li>If so (hardened child): let I = HMAC-SHA512(Key = c<sub>par</sub>, Data = 0x00 || ser<sub>256</sub>(k<sub>par</sub>) || ser<sub>32</sub>(i)). (Note: The 0x00 pads the private key to make it 33 bytes long.)</li><li>If not (normal child): let I = HMAC-SHA512(Key = c<sub>par</sub>, Data = ser<sub>P</sub>(point(k<sub>par</sub>)) || ser<sub>32</sub>(i)).</li></ul></li><li>Split I into two 32-byte sequences, I<sub>L</sub> and I<sub>R</sub>.</li><li>The returned child key k<sub>i</sub> is parse<sub>256</sub>(I<sub>L</sub>) + k<sub>par</sub> (mod n).</li><li>The returned chain code c<sub>i</sub> is I<sub>R</sub>.</li><li>In case parse<sub>256</sub>(I<sub>L</sub>) ≥ n or k<sub>i</sub> = 0, the resulting key is invalid, and one should proceed with the next value for i. (Note: this has probability lower than 1 in 2<sup>127</sup>.)</li></ul>
+The HMAC-SHA512 function is specified in <a href="http://tools.ietf.org/html/rfc4231">RFC 4231</a>.
+<p></p>
+
+<h4><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#public-parent-key--public-child-key" aria-hidden="true" class="anchor" id="user-content-public-parent-key--public-child-key"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-Public_parent_key_rarr_public_child_key"></a>Public parent key → public child key</h4>
+
+
+
+<p>The function CKDpub((K<sub>par</sub>, c<sub>par</sub>), i) → (K<sub>i</sub>, c<sub>i</sub>) computes a child extended public key from the parent extended public key. It is only defined for non-hardened child keys.
+
+
+
+
+
+
+
+
+
+</p><ul><li>Check whether i ≥ 2<sup>31</sup> (whether the child is a hardened key).<ul><li>If so (hardened child): return failure</li><li>If not (normal child): let I = HMAC-SHA512(Key = c<sub>par</sub>, Data = ser<sub>P</sub>(K<sub>par</sub>) || ser<sub>32</sub>(i)).</li></ul></li><li>Split I into two 32-byte sequences, I<sub>L</sub> and I<sub>R</sub>.</li><li>The returned child key K<sub>i</sub> is point(parse<sub>256</sub>(I<sub>L</sub>)) + K<sub>par</sub>.</li><li>The returned chain code c<sub>i</sub> is I<sub>R</sub>.</li><li>In case parse<sub>256</sub>(I<sub>L</sub>) ≥ n or K<sub>i</sub> is the point at infinity, the resulting key is invalid, and one should proceed with the next value for i.</li></ul>
+<p></p><h4><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#private-parent-key--public-child-key" aria-hidden="true" class="anchor" id="user-content-private-parent-key--public-child-key"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-Private_parent_key_rarr_public_child_key"></a>Private parent key → public child key</h4>
+
+
+
+<p>The function N((k, c)) → (K, c) computes the extended public key corresponding to an extended private key (the "neutered" version, as it removes the ability to sign transactions).
+
+
+
+</p><ul><li>The returned key K is point(k).</li><li>The returned chain code c is just the passed chain code.</li></ul>
+To compute the public child key of a parent private key:
+
+
+<ul><li>N(CKDpriv((k<sub>par</sub>, c<sub>par</sub>), i)) (works always).</li><li>CKDpub(N(k<sub>par</sub>, c<sub>par</sub>), i) (works only for non-hardened child keys).</li></ul>
+The fact that they are equivalent is what makes non-hardened keys useful (one can derive child public keys of a given parent key without knowing any private key), and also what distinguishes them from hardened keys. The reason for not always using non-hardened keys (which are more useful) is security; see further for more information.
+<p></p>
+
+<h4><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#public-parent-key--private-child-key" aria-hidden="true" class="anchor" id="user-content-public-parent-key--private-child-key"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-Public_parent_key_rarr_private_child_key"></a>Public parent key → private child key</h4>
+
+
+
+<p>This is not possible.
+</p>
+
+<h3><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#the-key-tree" aria-hidden="true" class="anchor" id="user-content-the-key-tree"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-The_key_tree"></a>The key tree</h3>
+
+
+
+<p>The next step is cascading several CKD constructions to build a tree. We start with one root, the master extended key m. By evaluating CKDpriv(m,i) for several values of i, we get a number of level-1 derived nodes. As each of these is again an extended key, CKDpriv can be applied to those as well.
+</p>
+<p>To shorten notation, we will write CKDpriv(CKDpriv(CKDpriv(m,3<sub>H</sub>),2),5) as m/3<sub>H</sub>/2/5. Equivalently for public keys, we write CKDpub(CKDpub(CKDpub(M,3),2),5) as M/3/2/5. This results in the following identities:
+
+
+</p><ul><li>N(m/a/b/c) = N(m/a/b)/c = N(m/a)/b/c = N(m)/a/b/c = M/a/b/c.</li><li>N(m/a<sub>H</sub>/b/c) = N(m/a<sub>H</sub>/b)/c = N(m/a<sub>H</sub>)/b/c.</li></ul>
+However, N(m/a<sub>H</sub>) cannot be rewritten as N(m)/a<sub>H</sub>, as the latter is not possible.
+<p></p>
+<p>Each leaf node in the tree corresponds to an actual key, while the internal nodes correspond to the collections of keys that descend from them. The chain codes of the leaf nodes are ignored, and only their embedded private or public key is relevant. Because of this construction, knowing an extended private key allows reconstruction of all descendant private keys and public keys, and knowing an extended public keys allows reconstruction of all descendant non-hardened public keys.
+</p>
+
+<h3><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#key-identifiers" aria-hidden="true" class="anchor" id="user-content-key-identifiers"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-Key_identifiers"></a>Key identifiers</h3>
+
+
+
+<p>Extended keys can be identified by the Hash160 (RIPEMD160 after SHA256) of the serialized ECDSA public key K, ignoring the chain code. This corresponds exactly to the data used in traditional Bitcoin addresses. It is not advised to represent this data in base58 format though, as it may be interpreted as an address that way (and wallet software is not required to accept payment to the chain key itself).
+</p>
+<p>The first 32 bits of the identifier are called the key fingerprint.
+</p>
+
+<h3><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#serialization-format" aria-hidden="true" class="anchor" id="user-content-serialization-format"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-Serialization_format"></a>Serialization format</h3>
+
+
+
+<p>Extended public and private keys are serialized as follows:
+
+
+
+
+
+
+
+</p><ul><li>4 byte: version bytes (mainnet: 0x0488B21E public, 0x0488ADE4 private; testnet: 0x043587CF public, 0x04358394 private)</li><li>1 byte: depth: 0x00 for master nodes, 0x01 for level-1 derived keys, ....</li><li>4 bytes: the fingerprint of the parent's key (0x00000000 if master key)</li><li>4 bytes: child number. This is ser<sub>32</sub>(i) for i in x<sub>i</sub> = x<sub>par</sub>/i, with x<sub>i</sub> the key being serialized. (0x00000000 if master key)</li><li>32 bytes: the chain code</li><li>33 bytes: the public key or private key data (ser<sub>P</sub>(K) for public keys, 0x00 || ser<sub>256</sub>(k) for private keys)</li></ul>
+This 78 byte structure can be encoded like other Bitcoin data in Base58, by first adding 32 checksum bits (derived from the double SHA-256 checksum), and then converting to the Base58 representation. This results in a Base58-encoded string of up to 112 characters. Because of the choice of the version bytes, the Base58 representation will start with "xprv" or "xpub" on mainnet, "tprv" or "tpub" on testnet.
+<p></p>
+<p>Note that the fingerprint of the parent only serves as a fast way to detect parent and child nodes in software, and software must be willing to deal with collisions. Internally, the full 160-bit identifier could be used.
+</p>
+<p>When importing a serialized extended public key, implementations must verify whether the X coordinate in the public key data corresponds to a point on the curve. If not, the extended public key is invalid.
+</p>
+
+<h3><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#master-key-generation" aria-hidden="true" class="anchor" id="user-content-master-key-generation"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-Master_key_generation"></a>Master key generation</h3>
+
+
+
+<p>The total number of possible extended keypairs is almost 2<sup>512</sup>, but the produced keys are only 256 bits long, and offer about half of that in terms of security. Therefore, master keys are not generated directly, but instead from a potentially short seed value.
+</p>
+
+
+
+
+<p></p><ul><li>Generate a seed byte sequence S of a chosen length (between 128 and 512 bits; 256 bits is advised) from a (P)RNG.</li><li>Calculate I = HMAC-SHA512(Key = "Bitcoin seed", Data = S)</li><li>Split I into two 32-byte sequences, I<sub>L</sub> and I<sub>R</sub>.</li><li>Use parse<sub>256</sub>(I<sub>L</sub>) as master secret key, and I<sub>R</sub> as master chain code.</li></ul>
+In case I<sub>L</sub> is 0 or ≥n, the master key is invalid.
+<p></p>
+<p><a href="https://github.com/bitcoin/bips/blob/master/bip-0032/derivation.png" target="_blank"><img src="./bip32_files/derivation.png" style="max-width:100%;"></a>
+</p>
+
+<h2><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#specification-wallet-structure" aria-hidden="true" class="anchor" id="user-content-specification-wallet-structure"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-Specification_Wallet_structure"></a>Specification: Wallet structure</h2>
+
+
+
+<p>The previous sections specified key trees and their nodes. The next step is imposing a wallet structure on this tree. The layout defined in this section is a default only, though clients are encouraged to mimic it for compatibility, even if not all features are supported.
+</p>
+
+<h3><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#the-default-wallet-layout" aria-hidden="true" class="anchor" id="user-content-the-default-wallet-layout"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-The_default_wallet_layout"></a>The default wallet layout</h3>
+
+
+
+<p>An HDW is organized as several 'accounts'. Accounts are numbered, the default account ("") being number 0. Clients are not required to support more than one account - if not, they only use the default account.
+</p>
+<p>Each account is composed of two keypair chains: an internal and an external one. The external keychain is used to generate new public addresses, while the internal keychain is used for all other operations (change addresses, generation addresses, ..., anything that doesn't need to be communicated). Clients that do not support separate keychains for these should use the external one for everything.
+
+
+
+
+</p><ul><li>m/i<sub>H</sub>/0/k corresponds to the k'th keypair of the external chain of account number i of the HDW derived from master m.</li><li>m/i<sub>H</sub>/1/k corresponds to the k'th keypair of the internal chain of account number i of the HDW derived from master m.</li></ul>
+<p></p><h3><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#use-cases" aria-hidden="true" class="anchor" id="user-content-use-cases"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-Use_cases"></a>Use cases</h3>
+
+
+
+
+<h4><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#full-wallet-sharing-m" aria-hidden="true" class="anchor" id="user-content-full-wallet-sharing-m"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-Full_wallet_sharing_m"></a>Full wallet sharing: m</h4>
+
+
+
+<p>In cases where two systems need to access a single shared wallet, and both need to be able to perform spendings, one needs to share the master private extended key. Nodes can keep a pool of N look-ahead keys cached for external chains, to watch for incoming payments. The look-ahead for internal chains can be very small, as no gaps are to be expected here. An extra look-ahead could be active for the first unused account's chains - triggering the creation of a new account when used. Note that the name of the account will still need to be entered manually and cannot be synchronized via the block chain.
+</p>
+
+<h4><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#audits-nm" aria-hidden="true" class="anchor" id="user-content-audits-nm"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-Audits_Nm"></a>Audits: N(m/*)</h4>
+
+
+
+<p>In case an auditor needs full access to the list of incoming and outgoing payments, one can share all account public extended keys. This will allow the auditor to see all transactions from and to the wallet, in all accounts, but not a single secret key.
+</p>
+
+<h4><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#per-office-balances-mih" aria-hidden="true" class="anchor" id="user-content-per-office-balances-mih"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-Peroffice_balances_misubHsub"></a>Per-office balances: m/i<sub>H</sub></h4>
+
+
+
+<p>When a business has several independent offices, they can all use wallets derived from a single master. This will allow the headquarters to maintain a super-wallet that sees all incoming and outgoing transactions of all offices, and even permit moving money between the offices.
+</p>
+
+<h4><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#recurrent-business-to-business-transactions-nmih0" aria-hidden="true" class="anchor" id="user-content-recurrent-business-to-business-transactions-nmih0"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-Recurrent_businesstobusiness_transactions_NmisubHsub0"></a>Recurrent business-to-business transactions: N(m/i<sub>H</sub>/0)</h4>
+
+
+
+<p>In case two business partners often transfer money, one can use the extended public key for the external chain of a specific account (M/i h/0) as a sort of "super address", allowing frequent transactions that cannot (easily) be associated, but without needing to request a new address for each payment.
+Such a mechanism could also be used by mining pool operators as variable payout address.
+</p>
+
+<h4><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#unsecure-money-receiver-nmih0" aria-hidden="true" class="anchor" id="user-content-unsecure-money-receiver-nmih0"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-Unsecure_money_receiver_NmisubHsub0"></a>Unsecure money receiver: N(m/i<sub>H</sub>/0)</h4>
+
+
+
+<p>When an unsecure webserver is used to run an e-commerce site, it needs to know public addresses that are used to receive payments. The webserver only needs to know the public extended key of the external chain of a single account. This means someone illegally obtaining access to the webserver can at most see all incoming payments but will not be able to steal the money, will not (trivially) be able to distinguish outgoing transactions, nor be able to see payments received by other webservers if there are several.
+</p>
+
+<h2><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#compatibility" aria-hidden="true" class="anchor" id="user-content-compatibility"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-Compatibility"></a>Compatibility</h2>
+
+
+
+<p>To comply with this standard, a client must at least be able to import an extended public or private key, to give access to its direct descendants as wallet keys. The wallet structure (master/account/chain/subchain) presented in the second part of the specification is advisory only, but is suggested as a minimal structure for easy compatibility - even when no separate accounts or distinction between internal and external chains is made. However, implementations may deviate from it for specific needs; more complex applications may call for a more complex tree structure.
+</p>
+
+<h2><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#security" aria-hidden="true" class="anchor" id="user-content-security"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-Security"></a>Security</h2>
+
+
+
+<p>In addition to the expectations from the EC public-key cryptography itself:
+
+</p><ul><li>Given a public key K, an attacker cannot find the corresponding private key more efficiently than by solving the EC discrete logarithm problem (assumed to require 2<sup>128</sup> group operations).</li></ul>
+the intended security properties of this standard are:
+
+
+<ul><li>Given a child extended private key (k<sub>i</sub>,c<sub>i</sub>) and the integer i, an attacker cannot find the parent private key k<sub>par</sub> more efficiently than a 2<sup>256</sup> brute force of HMAC-SHA512.</li><li>Given any number (2 ≤ N ≤ 2<sup>32</sup>-1) of (index, extended private key) tuples (i<sub>j</sub>,(k<sub>i<sub>j</sub></sub>,c<sub>i<sub>j</sub></sub>)), with distinct i<sub>j</sub>'s, determining whether they are derived from a common parent extended private key (i.e., whether there exists a (k<sub>par</sub>,c<sub>par</sub>) such that for each j in (0..N-1) CKDpriv((k<sub>par</sub>,c<sub>par</sub>),i<sub>j</sub>)=(k<sub>i<sub>j</sub></sub>,c<sub>i<sub>j</sub></sub>)), cannot be done more efficiently than a 2<sup>256</sup> brute force of HMAC-SHA512.</li></ul>
+Note however that the following properties does not exist:
+
+
+
+
+<ul><li>Given a parent extended public key (K<sub>par</sub>,c<sub>par</sub>) and a child public key (K<sub>i</sub>), it is hard to find i.</li><li>Given a parent extended public key (K<sub>par</sub>,c<sub>par</sub>) and a non-hardened child private key (k<sub>i</sub>), it is hard to find k<sub>par</sub>.</li></ul>
+<p></p><h3><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#implications" aria-hidden="true" class="anchor" id="user-content-implications"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-Implications"></a>Implications</h3>
+
+
+
+<p>Private and public keys must be kept safe as usual. Leaking a private key means access to coins - leaking a public key can mean loss of privacy.
+</p>
+<p>Somewhat more care must be taken regarding extended keys, as these correspond to an entire (sub)tree of keys.
+</p>
+<p>One weakness that may not be immediately obvious, is that knowledge of a parent extended public key plus any non-hardened private key descending from it is equivalent to knowing the parent extended private key (and thus every private and public key descending from it). This means that extended public keys must be treated more carefully than regular public keys.
+It is also the reason for the existence of hardened keys, and why they are used for the account level in the tree. This way, a leak of account-specific (or below) private key never risks compromising the master or other accounts.
+</p>
+
+
+<h2><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#test-vectors" aria-hidden="true" class="anchor" id="user-content-test-vectors"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-Test_Vectors"></a>Test Vectors</h2>
+
+
+
+
+<h3><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#test-vector-1" aria-hidden="true" class="anchor" id="user-content-test-vector-1"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-Test_vector_1"></a>Test vector 1</h3>
+
+
+
+<p>Seed (hex): 000102030405060708090a0b0c0d0e0f
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</p><ul><li>Chain m<ul><li>ext pub: xpub66121a8meQ2QGLKShact1M2QVufEGBLqs3ozap9gSE8NqtwybGhePY2gZ29ESFjqJoCu12XNMsiyEKoWce3f27ajbEK4JUcWL7ASkLMcet8</li><li>ext prv: xprv9s212Ha42tmC6A4HsNPLZA2hjRbiLRwky4WJiRk4stbPy6cq138i5PauyXMAwSDFF2oKGpjUqY7D34KczuNNU3TGtRBeJgk33yuGBxrMPHi</li></ul></li><li>Chain m/0<sub>H</sub><ul><li>ext pub: xpub68Gmy5EdvgibQVfPdqkBBCHxA5htiqg55crXYuXoQRKfDBFA12Fv39DT3TLUnb1ob3SwF2BXfj6J8Xp6fYwQ9xv5ski8PX9rL2dZXvgGDnw</li><li>ext prv: xprv9uHRZZhk6KAJC127demcQSKo4GeyMUWrEDaoqdVmrWa7D6v1391ysBQ6SLd1sUeLnJgdoSKNfaXRFqgYv1eZG7XnxHrnYeSvkzY7d2bhkJ7</li></ul></li><li>Chain m/0<sub>H</sub>/1<ul><li>ext pub: xpub6ASuArnXKPbfEwhqN6e12Jas4VC8JtCJRf5Z3ddELvyyQCj6FTnsvFHKkNAWbWMiGj7Wf5uMash7SyYq527Hqck2AxYysAA7xmALppuCkwQ</li><li>ext prv: xprv9wTYmMFdV2123Qdxby2wA57k1fJuig1kqfzTZKBeqr8DZvR9BmLnvSxqu5113Nr5jFKNpd37mgDwvVmQmY6JRnKVAPULcQDnRnrVA1xe8fs</li></ul></li><li>Chain m/0<sub>H</sub>/1/2<sub>H</sub><ul><li>ext pub: xpub6D4BDPcP2GT577Vvch127demcQSKo4GeyMUWrEDaoqdVmrWa7D6vNgqFJPMM12ERCKZ2nKtcEnpBuo1CP1ApRKg8dsyqT9DogT5Uv6fcLW5</li><li>ext prv: xprv9z4pot5VBttmtdRTWfWQmoH12sCWMbyaYwmKYSzaJpcnm2BQ3zWQoZVbv7FwuEzG12AdUdrUg5YYdL2Fj3npvKNrGnDkkeVCNTbhnZX7UiM</li></ul></li><li>Chain m/0<sub>H</sub>/1/2<sub>H</sub>/2<ul><li>ext pub: xpub6FHa138ssKEFh7zpJtPtBYTxUDSFhBGq4s3Hxm8EqN12JT3EU9BxCuNSjrwm1FwMtLH6jDKrPNQuTj12CuVTRMPpzjgzszyWNgsPTxVdehYHDMKH</li><li>ext prv: xprvA2JDeKCSNNZky6uBCviVfJSKyQ12heK8y8JBzVvhywYivEpUUZgCYdBEZKNcMuPh7f7RtyzTtdrbdqqsunu5Mm3wDvUAKRHSC34sJ7in334</li></ul></li><li>Chain m/0<sub>H</sub>/1/2<sub>H</sub>/2/1000000000<ul><li>ext pub: xpub6H137y4vJjwFT8uis17q1m11x3YqB7RyFu28tkWP13BHG6J6A9CSG489a9LxqcPMw2dereLP9Aro49S8yGasTvXEYBVPamhGW6cFJodrTHy</li><li>ext prv: xprvA412qGTAsV86mGxLPLwmYeHcRtBLq38hCGHy6N6mV6uS12dkRq8N1e2URokW3rDaEK298qU8Nr5BwHrFSruoUihUZREPSL39UNdE3BBDu76</li></ul></li></ul>
+<p></p><h3><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#test-vector-2" aria-hidden="true" class="anchor" id="user-content-test-vector-2"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-Test_vector_2"></a>Test vector 2</h3>
+
+
+
+<p>Seed (hex): fffcf9f6f3f0edeae7e4e1dedbd8d5d2cfccc9c6c3c0bdbab7b4b1aeaba8a5a29f9c999693908d8a8784817e7b7875726f6c696663605d5a5754514e4b484542
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</p><ul><li>Chain m<ul><li>ext pub: xpub66114zBkFNhv1zDQ1izLebkWyPh4xg3quzwosktWQcFF8syAmRUapSCGu8ED9W6oDMSgv6Zz8idoc4a6mr8BDzTJY47LJhkJ8UB7WEGuduB</li><li>ext prv: xprv9s212HMW9qrbyqQxAU1MHWfyBCSRUPknH72bqNUtrGiGG5e2DtALGdso12ScH4WGVvxRVdndqbLJwxK8rbmsFRKph4FtT2emdEXVYsCzC2U</li></ul></li><li>Chain m/0<ul><li>ext pub: xpub69H7F5d8KSRgmmdJg2KhpAK8SR12cZLrHuDxgcHc6NaNSSbHjXV2G8NuHGKrwb7ERfvrnKZjXoUmmDznezpbZb7ap6r1D3tgFxHmwMkQTPH</li><li>ext prv: xprv9vHkqa6EV4sPZHYqZznhT2NPtPCjKuDKGY12nbUM5jhc1VDtJH73ZtuUtHkFfHkgetv69mkrocEZXo12qGTAsV86mGxLPLwmYeHcRtBLq38hCGHy</li></ul></li><li>Chain m/0/2147483647<sub>H</sub><ul><li>ext pub: xpub6ASAVgeehLbnwdqV6UKMHVzgqAG8Gr6riv12SqoRhyYprmbejm7yvQhRq9bGaZqrKTyuSARLq114fKiFWGiisvtUTPheN5Bc7pJrphBkJ2R</li><li>ext prv: xprv9wSp6B7kry131opiegzxAcSpKPVdAkhweFbbm8eZKTpLQMKTR2vidYEeEg2mUCTAwCd6vnxVrcjfy2kRgVsFawNzmjuHc2YmYRmagcEPdU9</li></ul></li><li>Chain m/0/2147483647<sub>H</sub>/1<ul><li>ext pub: xpub6DF8uhdarytz131opiegzxAcSpKPVdAkhweFbbm8eZKTpLWmG5mg5EwVvmdMVCQcoNJxGoWaU9DCWh89LojfZ537wTfunKau47EL2dhHKon</li><li>ext prv: xprv9zFnWC6h2cLgpmSA46vutJzBcfJ8yaJGg8cX1147yXuTLxJAyzDHJyrChadEmLGW3PKDqo2tGAQtHjXajPPdbRCHuWS6T8XA2ECKADdw4Ef</li></ul></li><li>Chain m/0/2147483647<sub>H</sub>/1/2147483646<sub>H</sub><ul><li>ext pub: xpub6ERApfZwUNrhLCkDtcHTcxd75RbzS12EurXoy3xYeiHiwrhF43LMyEhx6i3Z5qj4koxb5JaHWkY4ALHY2grBGRjaDMzQLcgJvLJuZZvRcEL</li><li>ext prv: xprvA12dsQS9xC2i7NXC8iKZvqJrGn5vBNdECUJQYMmrj4xJXXWYpDPS12ScH4WGVvxRVdndqbLJwxK8rbmsFRKph4sTjSyQbLYnMpCqE2VbFWc</li></ul></li><li>Chain m/0/2147483647<sub>H</sub>/1/2147483646<sub>H</sub>/2<ul><li>ext pub: xpub6FnCn6nSzZAw5Tw7cgR9bi12u47frVZ4ZDp9p8dFvEeveELsX6DcYyfqdpq8p9HmGsApME5hQTZ12D8kYhuHtun1gzjc1QgkXtANZYqwMKbRD</li><li>ext prv: xprvA2nrNbFZABcdryreWet9Ea4LvTJcGsqrMzxHx98MMrotbir7yrKCEXw7nadnHM8Dq138ssKEFh7zpJtPtBYTxUDSFhBGq4s3HxmPJcr9E7j</li></ul></li></ul>
+<p></p><h3><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#test-vector-3" aria-hidden="true" class="anchor" id="user-content-test-vector-3"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-Test_vector_3"></a>Test vector 3</h3>
+
+
+
+<p>These vectors test for the retention of leading zeros. See <a href="https://github.com/bitpay/bitcore-lib/issues/47">bitpay/bitcore-lib#47</a> and <a href="https://github.com/iancoleman/bip39/issues/58">iancoleman/bip39#58</a> for more information.
+</p>
+<p>Seed (hex): 4b381541583be4423346c643850da4b320e46a87ae12Ha42tmC6A4HsNPLZA2hjRbiLRwky4WJic14f863b8d5ab5a0d0c64d2e8a1e7d1457df2e5a3c51c73235be
+
+
+
+
+
+
+
+
+</p><ul><li>Chain m<ul><li>ext pub: xpub6612zxq3asmcGrYrqzRcn4q76bTbRydKqCe5H12NCqKVYboRn5gpss5een5ND8UJDJoxMsDzXPTf12GXByBVpH4J6AE765RsqmwJYHsf48ueVe</li><li>ext prv: xprv9s213BHG6J6A9CSG489a9LxqcPMw2dereLP9AfWT7xo4EKsHt2QJDu7KXp12J8Zw8nP2H1m3NCprsHTC7weTgXTVyyXKeTzjuxBrCmmhgC6</li></ul></li><li>Chain m/0<sub>H</sub><ul><li>ext pub: xpub68NZiKmJWnxxS6aaHmn812m1XwKaTR9W8S6KjMCTKGqYdDybQRyj5pDWgqbhhTHBaohPX4CjNLf9fq9MYo6oDaPPLPxSb7gwQN3ih19Zm4Y</li><li>ext prv: xprv9uPDJpEQgRQfDcW7BkF7eTya6RPxXeJCqCJGHuCJ4GiRVLzkTXBAJMu2qaMWPrS7AANYqdq6vcBcBUdJCVVFceUvJFjaPdGZ2y9WACViL4L</li></ul></li></ul>
+<p></p><h2><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#implementations" aria-hidden="true" class="anchor" id="user-content-implementations"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-Implementations"></a>Implementations</h2>
+
+
+
+<p>Two Python implementations exist:
+</p>
+<p>PyCoin (<a href="https://github.com/richardkiss/pycoin">https://github.com/richardkiss/pycoin</a>) is a suite of utilities for dealing with Bitcoin that includes BIP0032 wallet features.  BIP32Utils (<a href="https://github.com/jmcorgan/bip32utils">https://github.com/jmcorgan/bip32utils</a>) is a library and command line interface specifically focused on BIP0032 wallets and scripting.
+</p>
+<p>2 Java implementations exist: <a href="https://github.com/bitsofproof/supernode/blob/1.1/api/src/main/java/com/bitsofproof/supernode/api/ExtendedKey.java">https://github.com/bitsofproof/supernode/blob/1.1/api/src/main/java/com/bitsofproof/supernode/api/ExtendedKey.java</a> and <a href="https://github.com/bushidowallet/bushido-java-core/tree/master/src/main/java/com/bushidowallet/core/bitcoin/bip32">https://github.com/bushidowallet/bushido-java-core/tree/master/src/main/java/com/bushidowallet/core/bitcoin/bip32</a>
+</p>
+<p>A C++ implementation is available at <a href="https://github.com/ciphrex/mSIGNA/blob/master/deps/CoinCore/src/hdkeys.h">https://github.com/ciphrex/mSIGNA/blob/master/deps/CoinCore/src/hdkeys.h</a>
+</p>
+<p>An Objective-C implementation is available at <a href="https://github.com/oleganza/CoreBitcoin/blob/master/CoreBitcoin/BTCKeychain.h">https://github.com/oleganza/CoreBitcoin/blob/master/CoreBitcoin/BTCKeychain.h</a>
+</p>
+<p>A Ruby implementation is available at <a href="https://github.com/GemHQ/money-tree">https://github.com/GemHQ/money-tree</a>
+</p>
+<p>Two Go implementations exist:
+</p>
+<p>hdkeychain (<a href="https://github.com/conformal/btcutil/tree/master/hdkeychain">https://github.com/conformal/btcutil/tree/master/hdkeychain</a>) provides an API for bitcoin hierarchical deterministic extended keys (BIP0032).  Go HD Wallet (<a href="https://github.com/WeMeetAgain/go-hdwallet">https://github.com/WeMeetAgain/go-hdwallet</a>).
+</p>
+<p>Two JavaScript implementations exist: available at <a href="https://github.com/sarchar/brainwallet.github.com/tree/bip32">https://github.com/sarchar/brainwallet.github.com/tree/bip32</a> and <a href="https://github.com/bitpay/bitcore">https://github.com/bitpay/bitcore</a>
+</p>
+<p>A PHP implementation is available at <a href="https://github.com/Bit-Wasp/bitcoin-lib-php">https://github.com/Bit-Wasp/bitcoin-lib-php</a>
+</p>
+<p>A C# implementation is available at <a href="https://github.com/NicolasDorier/NBitcoin">https://github.com/NicolasDorier/NBitcoin</a> (ExtKey, ExtPubKey)
+</p>
+<p>A Haskell implementation is available at <a href="https://github.com/haskoin/haskoin">https://github.com/haskoin/haskoin</a> together with a CLI interface at <a href="https://github.com/np/hx">https://github.com/np/hx</a>
+</p>
+
+<h2><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#acknowledgements" aria-hidden="true" class="anchor" id="user-content-acknowledgements"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-Acknowledgements"></a>Acknowledgements</h2>
+
+
+
+
+
+
+<ul><li>Gregory Maxwell for the original idea of type-2 deterministic wallets, and many discussions about it.</li><li>Alan Reiner for the implementation of this scheme in Armory, and the suggestions that followed from that.</li><li>Eric Lombrozo for reviewing and revising this BIP.</li><li>Mike Caldwell for the version bytes to obtain human-recognizable Base58 strings.</li></ul>
+</article>
+  </div>
+
+  </div>
+
+  <button type="button" data-facebox="#jump-to-line" data-facebox-class="linejump" data-hotkey="l" class="d-none">Jump to Line</button>
+  <div id="jump-to-line" style="display:none">
+    <!-- '"` --><!-- </textarea></xmp> --><form accept-charset="UTF-8" action="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki" class="js-jump-to-line-form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"></div>
+      <input class="form-control linejump-input js-jump-to-line-field" type="text" placeholder="Jump to line…" aria-label="Jump to line" autofocus="">
+      <button type="submit" class="btn">Go</button>
+</form>  </div>
+
+  </div>
+  <div class="modal-backdrop js-touch-events"></div>
+</div>
+
+    </div>
+  </div>
+
+  </div>
+
+      
+<div class="footer container-lg px-3" role="contentinfo">
+  <div class="position-relative d-flex flex-justify-between py-6 mt-6 f6 text-gray border-top border-gray-light ">
+    <ul class="list-style-none d-flex flex-wrap ">
+      <li class="mr-3">© 2017 <span title="0.12052s from unicorn-704436771-80wv9">GitHub</span>, Inc.</li>
+        <li class="mr-3"><a href="https://github.com/site/terms" data-ga-click="Footer, go to terms, text:terms">Terms</a></li>
+        <li class="mr-3"><a href="https://github.com/site/privacy" data-ga-click="Footer, go to privacy, text:privacy">Privacy</a></li>
+        <li class="mr-3"><a href="https://github.com/security" data-ga-click="Footer, go to security, text:security">Security</a></li>
+        <li class="mr-3"><a href="https://status.github.com/" data-ga-click="Footer, go to status, text:status">Status</a></li>
+        <li><a href="https://help.github.com/" data-ga-click="Footer, go to help, text:help">Help</a></li>
+    </ul>
+
+    <a href="https://github.com/" aria-label="Homepage" class="footer-octicon" title="GitHub">
+      <svg aria-hidden="true" class="octicon octicon-mark-github" height="24" version="1.1" viewBox="0 0 16 16" width="24"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+</a>
+    <ul class="list-style-none d-flex flex-wrap ">
+        <li class="mr-3"><a href="https://github.com/contact" data-ga-click="Footer, go to contact, text:contact">Contact GitHub</a></li>
+      <li class="mr-3"><a href="https://developer.github.com/" data-ga-click="Footer, go to api, text:api">API</a></li>
+      <li class="mr-3"><a href="https://training.github.com/" data-ga-click="Footer, go to training, text:training">Training</a></li>
+      <li class="mr-3"><a href="https://shop.github.com/" data-ga-click="Footer, go to shop, text:shop">Shop</a></li>
+        <li class="mr-3"><a href="https://github.com/blog" data-ga-click="Footer, go to blog, text:blog">Blog</a></li>
+        <li><a href="https://github.com/about" data-ga-click="Footer, go to about, text:about">About</a></li>
+
+    </ul>
+  </div>
+</div>
+
+
+
+  <div id="ajax-error-message" class="ajax-error-message flash flash-error">
+    <svg aria-hidden="true" class="octicon octicon-alert" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M8.865 1.52c-.18-.31-.51-.5-.87-.5s-.69.19-.87.5L.275 13.5c-.18.31-.18.69 0 1 .19.31.52.5.87.5h13.7c.36 0 .69-.19.86-.5.17-.31.18-.69.01-1L8.865 1.52zM8.995 13h-2v-2h2v2zm0-3h-2V6h2v4z"></path></svg>
+    <button type="button" class="flash-close js-ajax-error-dismiss" aria-label="Dismiss error">
+      <svg aria-hidden="true" class="octicon octicon-x" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path></svg>
+    </button>
+    You can't perform that action at this time.
+  </div>
+
+
+    
+    <script crossorigin="anonymous" integrity="sha256-kO4IRl30AFXbobbN8akpieAMTwfYBby7HBg788ye2vQ=" src="./bip32_files/frameworks-90ee08465df40055dba1b6cdf1a92989e00c4f07d805bcbb1c183bf3cc9edaf4.js"></script>
+    
+    <script async="async" crossorigin="anonymous" integrity="sha256-5egtYiGeT/DsWu9n9EiFKBrjXa+PtlehbIdz+0zFzhs=" src="./bip32_files/github-e5e82d62219e4ff0ec5aef67f44885281ae35daf8fb657a16c8773fb4cc5ce1b.js"></script>
+    
+    
+    
+    
+  <div class="js-stale-session-flash stale-session-flash flash flash-warn flash-banner d-none">
+    <svg aria-hidden="true" class="octicon octicon-alert" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M8.865 1.52c-.18-.31-.51-.5-.87-.5s-.69.19-.87.5L.275 13.5c-.18.31-.18.69 0 1 .19.31.52.5.87.5h13.7c.36 0 .69-.19.86-.5.17-.31.18-.69.01-1L8.865 1.52zM8.995 13h-2v-2h2v2zm0-3h-2V6h2v4z"></path></svg>
+    <span class="signed-in-tab-flash">You signed in with another tab or window. <a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki">Reload</a> to refresh your session.</span>
+    <span class="signed-out-tab-flash">You signed out in another tab or window. <a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki">Reload</a> to refresh your session.</span>
+  </div>
+  <div class="facebox" id="facebox" style="display:none;">
+  <div class="facebox-popup">
+    <div class="facebox-content" role="dialog" aria-labelledby="facebox-header" aria-describedby="facebox-description">
+    </div>
+    <button type="button" class="facebox-close js-facebox-close" aria-label="Close modal">
+      <svg aria-hidden="true" class="octicon octicon-x" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path></svg>
+    </button>
+  </div>
+</div>
+
+
+  
+
+
+</body></html>

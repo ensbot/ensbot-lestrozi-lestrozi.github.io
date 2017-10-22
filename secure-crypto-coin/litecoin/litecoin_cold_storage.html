@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)http://docs.electrum.org/en/latest/coldstorage.html -->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Cold Storage — Electrum 2.10 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+
+  
+    <link rel="stylesheet" href="./litecoin_cold_storage_files/sphinx_rtd_theme.css" type="text/css">
+  
+
+  
+        <link rel="index" title="Index" href="http://docs.electrum.org/en/latest/genindex.html">
+        <link rel="search" title="Search" href="http://docs.electrum.org/en/latest/search.html">
+    <link rel="top" title="Electrum 2.10 documentation" href="http://docs.electrum.org/en/latest/index.html">
+        <link rel="next" title="Command Line" href="http://docs.electrum.org/en/latest/cmdline.html">
+        <link rel="prev" title="Multisig Wallets" href="http://docs.electrum.org/en/latest/multisig.html"> 
+
+  
+  <script type="text/javascript" async="" src="./litecoin_cold_storage_files/ga.js"></script><script src="./litecoin_cold_storage_files/modernizr.min.js"></script>
+
+
+<!-- RTD Extra Head -->
+
+<!-- 
+Always link to the latest version, as canonical.
+http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="http://docs.electrum.org/en/latest/coldstorage.html">
+
+<link rel="stylesheet" href="./litecoin_cold_storage_files/readthedocs-doc-embed.css" type="text/css">
+
+<script type="text/javascript" src="./litecoin_cold_storage_files/readthedocs-data.js"></script>
+
+<!-- Add page-specific data, which must exist in the page js, not global -->
+<script type="text/javascript">
+READTHEDOCS_DATA['page'] = 'coldstorage' 		
+READTHEDOCS_DATA['source_suffix'] = '.rst'
+</script>
+
+<script type="text/javascript" src="./litecoin_cold_storage_files/readthedocs-dynamic-include.js"></script>
+
+<!-- end RTD <extrahead> --></head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="http://docs.electrum.org/en/latest/index.html" class="icon icon-home"> Electrum
+          
+
+          
+          </a>
+
+          
+            
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="http://docs.electrum.org/en/latest/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs">
+    <input type="hidden" name="check_keywords" value="yes">
+    <input type="hidden" name="area" value="default">
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="http://docs.electrum.org/en/latest/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.electrum.org/en/latest/invoices.html">Invoices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.electrum.org/en/latest/2fa.html">Two Factor Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.electrum.org/en/latest/multisig.html">Multisig Wallets</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="http://docs.electrum.org/en/latest/coldstorage.html#"><span class="toctree-expand"></span>Cold Storage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.electrum.org/en/latest/coldstorage.html#create-an-offline-wallet">Create an offline wallet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.electrum.org/en/latest/coldstorage.html#create-a-watching-only-version-of-your-wallet">Create a watching-only version of your wallet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.electrum.org/en/latest/coldstorage.html#create-an-unsigned-transaction">Create an unsigned transaction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.electrum.org/en/latest/coldstorage.html#get-your-transaction-signed">Get your transaction signed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.electrum.org/en/latest/coldstorage.html#broadcast-your-transaction">Broadcast your transaction</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.electrum.org/en/latest/cmdline.html">Command Line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.electrum.org/en/latest/coldstorage_cmdline.html">Using cold storage with the command line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.electrum.org/en/latest/merchant.html">How to accept Bitcoin on a website using Electrum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.electrum.org/en/latest/hardfork.html">How to split your coins using Electrum in case of a fork</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.electrum.org/en/latest/tor.html">Using Electrum Through Tor</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.electrum.org/en/latest/console.html">The Python Console</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.electrum.org/en/latest/spv.html">Simple Payment Verification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.electrum.org/en/latest/seedphrase.html">Electrum Seed Version System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.electrum.org/en/latest/protocol.html">Electrum protocol specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.electrum.org/en/latest/transactions.html">Serialization of unsigned or partially signed transactions</a></li>
+</ul>
+
+            
+          
+        </div>
+      <div class="rtd-pro wy-menu"><div class="rtd-pro-about"><a href="http://docs.readthedocs.io/en/latest/ethical-advertising.html"><i class="fa fa-info-circle"></i></a></div><a class="rtd-pro-image-wrapper" href="http://readthedocs.org/sustainability/click/121/0X1FWvSi09Jh/" target="_blank"><img class="rtd-pro-image" src="./litecoin_cold_storage_files/saved_resource"></a><span>Make and receive SMS messages in your applications with just <a class="rtd-pro-link" href="http://readthedocs.org/sustainability/click/121/0X1FWvSi09Jh/" target="_blank">a few lines of Python</a> code.</span></div><div class="rtd-pro-wrapper"></div></div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="http://docs.electrum.org/en/latest/index.html">Electrum</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="http://docs.electrum.org/en/latest/index.html">Docs</a> »</li>
+        
+      <li>Cold Storage</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/spesmilo/electrum-docs/blob/master/coldstorage.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="cold-storage">
+<span id="coldstorage"></span><h1>Cold Storage<a class="headerlink" href="http://docs.electrum.org/en/latest/coldstorage.html#cold-storage" title="Permalink to this headline">¶</a></h1>
+<p>This document shows how to create an offline wallet that
+holds your Bitcoins and a watching-only online wallet that
+is used to view its history and to create transactions that
+have to be signed with the offline wallet before being
+broadcast on the online one.</p>
+<div class="section" id="create-an-offline-wallet">
+<h2>Create an offline wallet<a class="headerlink" href="http://docs.electrum.org/en/latest/coldstorage.html#create-an-offline-wallet" title="Permalink to this headline">¶</a></h2>
+<p>Create a wallet on an offline machine, as per the usual process (file
+-&gt; new) etc.</p>
+<p>After creating the wallet, go to Wallet -&gt; Master Public Keys.</p>
+<img alt="_images/mpk_window.png" src="./litecoin_cold_storage_files/mpk_window.png">
+<p>The Master Public Key of your wallet is the string shown in this popup
+window.  Transfer that key to your online machine somehow.</p>
+</div>
+<div class="section" id="create-a-watching-only-version-of-your-wallet">
+<h2>Create a watching-only version of your wallet<a class="headerlink" href="http://docs.electrum.org/en/latest/coldstorage.html#create-a-watching-only-version-of-your-wallet" title="Permalink to this headline">¶</a></h2>
+<p>On your online machine, open up Electrum and select File -&gt;
+New/Restore. Enter a name for the wallet and select “Restore a wallet
+or import keys”.</p>
+<img alt="_images/restore.png" src="./litecoin_cold_storage_files/restore.png">
+<p>Paste your master public key in the box.</p>
+<img alt="_images/restore_key.png" src="./litecoin_cold_storage_files/restore_key.png">
+<p>Click Next to complete the creation of your wallet.
+When you’re done, you should see a popup informing you that you are opening a watching-only wallet.</p>
+<img alt="_images/watchingonly.png" src="./litecoin_cold_storage_files/watchingonly.png">
+<p>Then you should see the transaction history of your cold wallet.</p>
+</div>
+<div class="section" id="create-an-unsigned-transaction">
+<h2>Create an unsigned transaction<a class="headerlink" href="http://docs.electrum.org/en/latest/coldstorage.html#create-an-unsigned-transaction" title="Permalink to this headline">¶</a></h2>
+<p>Go to the “send” tab on your online watching-only wallet,
+input the transaction data and press “Send...”. A window opens up, informing you that a
+transaction fee will be added. Continue.</p>
+<img alt="_images/unsigned.png" src="./litecoin_cold_storage_files/unsigned.png">
+<p>In the window that opens up, press “save” and save the
+transaction file somewhere on your computer. Close the
+window and transfer the transaction file to your offline
+machine (e.g. with a usb stick).</p>
+</div>
+<div class="section" id="get-your-transaction-signed">
+<h2>Get your transaction signed<a class="headerlink" href="http://docs.electrum.org/en/latest/coldstorage.html#get-your-transaction-signed" title="Permalink to this headline">¶</a></h2>
+<p>On your offline wallet, select Tools -&gt; Load transaction -&gt; From file
+in the menu and select the transaction file created in the previous
+step.</p>
+<img alt="_images/sign.png" src="./litecoin_cold_storage_files/sign.png">
+<p>Press “sign”. Once the transaction is signed, the Transaction ID
+appears in its designated field.</p>
+<img alt="_images/signed.png" src="./litecoin_cold_storage_files/signed.png">
+<p>Press save, store the file somewhere on your
+computer, and transfer it back to your online machine.</p>
+</div>
+<div class="section" id="broadcast-your-transaction">
+<h2>Broadcast your transaction<a class="headerlink" href="http://docs.electrum.org/en/latest/coldstorage.html#broadcast-your-transaction" title="Permalink to this headline">¶</a></h2>
+<p>On your online machine, select Tools -&gt; Load transaction -&gt; From File
+from the menu. Select the signed transaction file. In the window that
+opens up, press “broadcast”. The transaction will be broadcasted over
+the Bitcoin network.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="http://docs.electrum.org/en/latest/cmdline.html" class="btn btn-neutral float-right" title="Command Line" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="http://docs.electrum.org/en/latest/multisig.html" class="btn btn-neutral" title="Multisig Wallets" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr>
+
+  <div role="contentinfo">
+    <p>
+        © Copyright 2017, Thomas Voegtlin.
+      
+        <span class="commit">
+          Revision <code>5722b6f6</code>.
+        </span>
+      
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions"><!-- Inserted RTD Footer -->
+<div class="injected">
+
+  
+
+      
+      
+      
+      <dl>
+        <dt>Versions</dt>
+        
+         <strong> 
+        <dd><a href="http://docs.electrum.org/en/latest/coldstorage.html">latest</a></dd>
+         </strong> 
+        
+      </dl>
+      
+      
+
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+        <dd><a href="http://readthedocs.org/projects/electrum/downloads/pdf/latest/">PDF</a></dd>
+        
+        <dd><a href="http://readthedocs.org/projects/electrum/downloads/htmlzip/latest/">HTML</a></dd>
+        
+        <dd><a href="http://readthedocs.org/projects/electrum/downloads/epub/latest/">Epub</a></dd>
+        
+      </dl>
+      
+      
+
+      
+      <dl>
+        <!-- These are kept as relative links for internal installs that are http -->
+        <dt>On Read the Docs</dt>
+        <dd>
+          <a href="http://readthedocs.org/projects/electrum/">Project Home</a>
+        </dd>
+        <dd>
+          <a href="http://readthedocs.org/projects/electrum/builds/">Builds</a>
+        </dd>
+        <dd>
+          <a href="http://readthedocs.org/projects/electrum/downloads/">Downloads</a>
+        </dd>
+      </dl>
+      
+
+      
+
+      
+      <dl>
+        <dt>On GitHub</dt>
+        <dd>
+          <a href="https://github.com/spesmilo/electrum-docs/blob/master/coldstorage.rst">View</a>
+        </dd>
+        <dd>
+          <a href="https://github.com/spesmilo/electrum-docs/edit/master/coldstorage.rst">Edit</a>
+        </dd>
+      </dl>
+      
+      
+
+      
+      <dl>
+        <dt>Search</dt>
+        <dd>
+          <div style="padding: 6px;">
+            <form id="flyout-search-form" class="wy-form" target="_blank" action="http://readthedocs.org/projects/electrum/search/" method="get">
+              <input type="text" name="q" placeholder="Search docs">
+              </form>
+          </div>
+        </dd>
+      </dl>
+      
+
+
+
+      <hr>
+      
+      Free document hosting provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+      
+
+      
+
+</div>
+</div>
+  </div>
+
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2.10',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="./litecoin_cold_storage_files/jquery-2.0.3.min.js"></script>
+      <script type="text/javascript" src="./litecoin_cold_storage_files/jquery-migrate-1.2.1.min.js"></script>
+      <script type="text/javascript" src="./litecoin_cold_storage_files/underscore.js"></script>
+      <script type="text/javascript" src="./litecoin_cold_storage_files/doctools.js"></script>
+      <script type="text/javascript" src="./litecoin_cold_storage_files/readthedocs-doc-embed.js"></script>
+
+  
+
+  
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+
+</body></html>
