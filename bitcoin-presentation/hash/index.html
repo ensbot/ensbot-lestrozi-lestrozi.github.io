@@ -1,0 +1,67 @@
+<html>
+<head>
+  <title>Hashes</title>
+  <script src="sha256.js"></script>
+  <style>
+    #sha512 { font-family: Monospace; font-size: 25px; }
+    div { font-family: Monospace; font-size: 15px; margin-top: 20px; }
+    div.words1296 { white-space: pre; float: left; margin-right: 20px; }
+
+    #random { font-family: Monospace; font-size: 25px; width: 700px; height: 300px; }
+
+    body { text-align: center; }
+
+  </style>
+</head>
+<body>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1>SHA-256</h1>
+<textarea id="random"></textarea>
+<div id="sha512"></div>
+
+<script>
+var nums;
+
+function markDiceNumbers(v) {
+  cs = {
+    '0': '#e6194b',
+    '1': '#3cb44b',
+    '2': '#ffe119',
+    '3': '#0082c8',
+    '4': '#f58231',
+    '5': '#911eb4',
+    '6': '#008080',
+    '7': '#aa6e28',
+    '8': '#800000',
+    '9': '#808000',
+    'a': '#ffd8b1',
+    'b': '#000080',
+    'c': '#808080',
+    'd': '#fabebe',
+    'e': '#46f0f0',
+    'f': '#e6beff'
+  };
+
+  r='';
+  for(var i=0; i<v.length; i++) {
+    var c = v[i];
+    r += '<font style="color:'+cs[c]+'">' + c + '</font>';
+    nums += c;
+  }
+
+  return r;
+}
+
+var random = document.getElementById('random');
+random.addEventListener('input', function() {
+  nums='';
+
+  sha512value = sha256(random.value);
+  document.getElementById('sha512').innerHTML = markDiceNumbers(sha512value);
+
+});
+</script>
+
+</body>
+</html>

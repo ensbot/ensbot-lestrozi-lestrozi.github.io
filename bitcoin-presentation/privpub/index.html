@@ -1,0 +1,86 @@
+<html>
+<head>
+  <title>Multiplication / Factorization</title>
+  <script src="biginteger.js"></script>
+  <style>
+    div { font-family: Monospace; font-size: 15px; margin-top: 20px; }
+    input {  font-size: 16px; }
+    textarea {  font-size: 16px; }
+    body { text-align: center; }
+
+  </style>
+</head>
+<body>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1>Multiplication</h1>
+<input id="num1" value="349829"></input>
+<input id="num2" value="922679"></input>
+<button id="multiply">Multiply</button> <span id="benchmult"></span>
+<div>
+<textarea id="result" style="width: 700px; height: 150px;"></textarea>
+</div>
+
+<br /><br /><br />
+<h1>Factorization</h1>
+<input id="num" size=60 value="322779871891"></input>
+<button id="factor">Factor</button> <span id="benchfactor"></span>
+<div>
+<input id="factorNum" size=30></input>
+</div>
+
+<br />
+<div align="right">
+<font size="1">651617</font>
+</div>
+
+<script>
+function getFactor(num) {
+    var root, factors = [], x;
+    while(true){
+        root = num;
+        x = BigInteger(2);
+        if (num.remainder(x) != 0) {
+            x = BigInteger(3);
+            while ((num.remainder(x) != 0) && (x.compare(num) < 0)) {
+              x = x.add(2);
+            }
+        }
+	return x;
+    }
+    return -1;
+}
+
+
+var multiplyButton = document.getElementById('multiply');
+multiplyButton.addEventListener('click', function() {
+  var num1 = BigInteger(document.getElementById('num1').value);
+  var num2 = BigInteger(document.getElementById('num2').value);
+
+  var start = new Date();
+  var v = num1.multiply(num2);
+  var end = new Date();
+  var time = end.getTime() - start.getTime();
+
+  document.getElementById('result').value = v;
+  document.getElementById('benchmult').innerHTML = time + " ms";
+});
+
+var factorButton = document.getElementById('factor');
+factorButton.addEventListener('click', function() {
+  var num = BigInteger(document.getElementById('num').value);
+
+  document.getElementById('factorNum').value = "calculating...";
+
+  var start = new Date();
+  var v = getFactor(num);
+  var end = new Date();
+  var time = end.getTime() - start.getTime();
+
+  document.getElementById('factorNum').value = v;
+  document.getElementById('benchfactor').innerHTML = time + " ms";
+});
+</script>
+
+</body>
+</html>
