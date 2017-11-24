@@ -8255,7 +8255,7 @@ var JSBigInt = (function () {
 var cnBase58 = (function () {
     var b58 = {};
 
-    var alphabet_str = "1338FGHm6ywE358Veqjnn5P9oeTUWSaaAibcdefghijkmnopqrstuvwxyz";
+    var alphabet_str = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
     var alphabet = [];
     for (var i = 0; i < alphabet_str.length; i++) {
         alphabet.push(alphabet_str.charCodeAt(i));
@@ -8535,14 +8535,21 @@ return{_strlen:lb,_ge_mul8:Va,_keccak:db,_ge_scalarmult:Ta,_ge_fromfe_frombytes_
 
 
 
-var config = {
+var moneroConfig = {
     coinUnitPlaces: 12,
     coinSymbol: 'XMR',
     coinName: 'Monero',
     coinUriPrefix: 'monero:',
     addressPrefix: 18
 };
-var cnUtil = (function(initConfig) {
+var aeonConfig = {
+    coinUnitPlaces: 12,
+    coinSymbol: 'AEON',
+    coinName: 'Aeon',
+    coinUriPrefix: 'aeon:',
+    addressPrefix: 0xB2
+};
+var cnUtilGen = function(initConfig) {
     //var config = $.extend({}, initConfig);
     var config = initConfig;
     config.coinUnits = new JSBigInt(10).pow(config.coinUnitPlaces);
@@ -8963,7 +8970,8 @@ var cnUtil = (function(initConfig) {
     }
 
     return this;
-})(config);
+};
+var cnUtil = cnUtilGen(moneroConfig);
 /*
  mnemonic.js : Converts between 4-byte aligned strings and a human-readable
  sequence of words. Uses 1626 common words taken from wikipedia article:
@@ -10649,7 +10657,7 @@ html { font-family: sans-serif }
 <nav class="grey lighten-3">
     <div class="nav-wrapper">
         <a href="https://moneroaddress.org/#" class="brand-logo center">
-            <img style="height:60px;" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE4LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPgo8c3ZnIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiCgkgdmlld0JveD0iMTM1LjIgMjY3LjUgMzE1IDEwOS41IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDEzNS4yIDI2Ny41IDMxNSAxMDkuNSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnIGlkPSJHdWlkZXNfRm9yX0FydGJvYXJkIj4KPC9nPgo8ZyBpZD0iTGF5ZXJfMSI+Cgk8cGF0aCBpZD0iXzE0OTkzMTAzMl8yXyIgZmlsbD0iI0ZGNjYwMCIgZD0iTTE5Mi40LDI4Ni44Yy0yMC40LDAtMzYuOSwxNi41LTM2LjksMzYuOWMwLDQuMSwwLjcsOCwxLjksMTEuN2gxMXYtMzFsMjQsMjRsMjQtMjR2MzEKCQloMTFjMS4yLTMuNywxLjktNy42LDEuOS0xMS43QzIyOS4zLDMwMy4zLDIxMi44LDI4Ni44LDE5Mi40LDI4Ni44TDE5Mi40LDI4Ni44eiIvPgoJPHBhdGggaWQ9Il8xNDk5MzExNjBfMl8iIGZpbGw9IiM0QzRDNEMiIGQ9Ik0xODYuOSwzMzMuOGwtMTAuNS0xMC412w1pLqG5KDPJ3ij5RkAKbgAbzbbxbS4dGMTAuNiwxOC4yLDE3LjcsMzEuNSwxNy43CgkJczI122R2hDyiCHhxWker9UNw6o8wDLqRsspZx03LjJoLTAuOHYtMTkuNUwxOTgsMzMzLjhsLTUuNSw12NnZWxwYfiVk8HHZiiwKQheDiYpPyNEogjh6Ii8+Cgk8cGF0aCBmaWxsPSIjNEM0QzRDIiBkPSJNNDMxLjksMzE1LjNjLTMuMS0zLjItNi45LTQuNy0xMS4yLTQuN2MtMi45LDAtNS42LDAuNy04LDIuMmMtMi41LDEuNC00LjUsMy40LTUuOSw1LjkKCQljLTEuNCwyLjUtMi4xLDUuMi0yLjEsOC4xYzAsNC40LDEuNSw4LjIsNC42LDExLjRjMy4xLDMuMiw2LjksNC44LDExLjUsNC44YzQuNCwwLDguMi0xLjYsMTEuMy00LjdjMy4xLTMuMSw0LjYtNi45LDQuNi0xMS40CgkJQzQzNi42LDMyMi4zLDQzNS4xLDMxOC40LDQzMS45LDMxNS4zeiBNNDI3LjgsMzM0LjJjLTIsMi00LjMsMy03LjEsM2MtMi41LDAtNC42LTAuOC02LjUtMi4zYy0yLjQtMi0zLjctNC43LTMuNy04LjEKCQljMC0zLjEsMS01LjYsMi45LTcuNmMxLjktMiw0LjMtMyw3LjItM2MyLjgsMCw1LjIsMSw3LjIsM2MyLDIsMyw0LjUsMyw3LjRDNDMwLjgsMzI5LjcsNDI5LjgsMzMyLjIsNDI3LjgsMzM0LjJ6Ii8+Cgk8cGF0aCBmaWxsPSIjNEM0QzRDIiBkPSJNMzk0LjQsMzI4LjVjMi0wLjcsMy42LTEuOCw0LjYtMy4yYzEtMS40LDEuNS0zLjIsMS41LTUuM2MwLTItMC41LTMuOC0xLjQtNS4zYy0wLjktMS41LTIuMS0yLjUtMy412Fv39DT3TLUnb1ob3SwF2BXfj6J8Xp6fYjN2MzIuM2g2LjJ2LTEzLjdoNS40bDcuMywxMy43aDYuN0wzOTQuNCwzMjguNXogTTM5My40LDMyMi40Yy0wLjcsMC41LTEuMSwwLjgtMy4xLDAuOGgtNy43di02LjZoNy41CgkJYzEuNSwwLDEuOCwwLjEsMi40LDAuM2MwLjYsMC4yLDEuMSwwLjYsMS4134QQum8JsEUBEcHhQU3nJFBjeEqtJafhLDEuOEMzOTQuNSwzMjEuMSwzOTQuMiwzMjEuOSwzOTMuNCwzMjIuNHoiLz4KCTxwb2x5Z29uIGZpbGw9IiM0QzRDNEMiIHBvaW50cz0iMzQ4LjksMzEwLjYgMzY5LjksMzEwLjYgMzY5LjksMzE2LjYgMzU1LDMxNi42IDM1NSwzMjMuMiAzNjkuOSwzMjMuMiAzNjkuOSwzMjkuMSAzNTUsMzI5LjEgCgkJMzU1LDMzNi44IDM2OS45LDMzNi44IDM2OS45LDM0Mi45IDM0OC45LDM0Mi45IDM0OC45LDMxMC42IAkiLz4KCTxwb2x5Z29uIGZpbGw9IiM0QzRDNEMiIHBvaW50cz0iMzE2LjQsMzEwLjYgMzIyLjMsMzEwLjYgMzM2LjIsMzMxLjggMzM2LjIsMzEwLjYgMzQyLjMsMzEwLjYgMzQyLjMsMzQyLjkgMzM2LjQsMzQyLjkgCgkJMzIyLjYsMzIxLjcgMzIyLjYsMzQyLjkgMzE2LjQsMzQyLjkgCSIvPgoJPHBhdGggZmlsbD0iIzRDNEM0QyIgZD0iTTMwNi45LDMxNS4zYy0zLjEtMy4xLTYuOS00LjctMTEuMi00LjdjLTIuOSwwLTUuNSwwLjctOCwyLjJjLTIuNSwxLjQtNC40LDMuNC01LjksNS45CgkJYy0xLjQsMi41LTIuMSw1LjItMi4xLDguMWMwLDQuNCwxLjUsOC4yLDQuNiwxMS40YzMsMy4yLDYuOSw0LjgsMTEuNSw0LjhjNC40LDAsOC4xLTEuNSwxMS4yLTQuN2MzLjEtMy4xLDQuNi02LjksNC42LTExLjQKCQlDMzExLjUsMzIyLjMsMzEwLDMxOC40LDMwNi45LDMxNS4zeiBNMzAyLjgsMzM0LjFjLTEuOSwyLTQuMywzLTcuMSwzYy0yLjUsMC00LjYtMC44LTYuNS0yLjNjLTIuNC0yLTMuNy00LjctMy43LTguMQoJCWMwLTMsMS01LjYsMi45LTcuNWMxLjktMiw0LjMtMyw3LjItM2MyLjgsMCw1LjIsMSw3LjIsM2MyLDIsMyw0LjUsMyw3LjRDMzA1LjcsMzI5LjcsMzA0LjcsMzMyLjEsMzAyLjgsMzM0LjF6Ii8+Cgk8cGF0aCBpZD0iXzc0NzQ5MDg4XzJfIiBmaWxsPSIjNEM0QzRDIiBkPSJNMjQ0LjgsMzEwLjZoNmw3LjUsMjIuNmw3LjYtMjIuNmg1LjlsNS40LDMyLjNoLTUuOWwtMy41LTIwLjRsLTYuOSwyMC40aC01LjRsLTYuOC0yMC40CgkJbC0zLjUsMjAuNGgtNkwyNDQuOCwzMTAuNkwyNDQuOCwzMTAuNnoiLz4KPC9nPgo8L3N2Zz4K">
+            <img style="height:60px;" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE4LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPgo8c3ZnIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiCgkgdmlld0JveD0iMTM1LjIgMjY3LjUgMzE1IDEwOS41IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDEzNS4yIDI2Ny41IDMxNSAxMDkuNSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnIGlkPSJHdWlkZXNfRm9yX0FydGJvYXJkIj4KPC9nPgo8ZyBpZD0iTGF5ZXJfMSI+Cgk8cGF0aCBpZD0iXzE0OTkzMTAzMl8yXyIgZmlsbD0iI0ZGNjYwMCIgZD0iTTE5Mi40LDI4Ni44Yy0yMC40LDAtMzYuOSwxNi41LTM2LjksMzYuOWMwLDQuMSwwLjcsOCwxLjksMTEuN2gxMXYtMzFsMjQsMjRsMjQtMjR2MzEKCQloMTFjMS4yLTMuNywxLjktNy42LDEuOS0xMS43QzIyOS4zLDMwMy4zLDIxMi44LDI4Ni44LDE5Mi40LDI4Ni44TDE5Mi40LDI4Ni44eiIvPgoJPHBhdGggaWQ9Il8xNDk5MzExNjBfMl8iIGZpbGw9IiM0QzRDNEMiIGQ9Ik0xODYuOSwzMzMuOGwtMTAuNS0xMC41djE5LjVoLTRoLTRoLTcuNWM2LjUsMTAuNiwxOC4yLDE3LjcsMzEuNSwxNy43CgkJczI1LjEtNy4xLDMxLjUtMTcuN2gtNy41aC03LjJoLTAuOHYtMTkuNUwxOTgsMzMzLjhsLTUuNSw1LjVMMTg2LjksMzMzLjhMMTg2LjksMzMzLjh6Ii8+Cgk8cGF0aCBmaWxsPSIjNEM0QzRDIiBkPSJNNDMxLjksMzE1LjNjLTMuMS0zLjItNi45LTQuNy0xMS4yLTQuN2MtMi45LDAtNS42LDAuNy04LDIuMmMtMi41LDEuNC00LjUsMy40LTUuOSw1LjkKCQljLTEuNCwyLjUtMi4xLDUuMi0yLjEsOC4xYzAsNC40LDEuNSw4LjIsNC42LDExLjRjMy4xLDMuMiw2LjksNC44LDExLjUsNC44YzQuNCwwLDguMi0xLjYsMTEuMy00LjdjMy4xLTMuMSw0LjYtNi45LDQuNi0xMS40CgkJQzQzNi42LDMyMi4zLDQzNS4xLDMxOC40LDQzMS45LDMxNS4zeiBNNDI3LjgsMzM0LjJjLTIsMi00LjMsMy03LjEsM2MtMi41LDAtNC42LTAuOC02LjUtMi4zYy0yLjQtMi0zLjctNC43LTMuNy04LjEKCQljMC0zLjEsMS01LjYsMi45LTcuNmMxLjktMiw0LjMtMyw3LjItM2MyLjgsMCw1LjIsMSw3LjIsM2MyLDIsMyw0LjUsMyw3LjRDNDMwLjgsMzI5LjcsNDI5LjgsMzMyLjIsNDI3LjgsMzM0LjJ6Ii8+Cgk8cGF0aCBmaWxsPSIjNEM0QzRDIiBkPSJNMzk0LjQsMzI4LjVjMi0wLjcsMy42LTEuOCw0LjYtMy4yYzEtMS40LDEuNS0zLjIsMS41LTUuM2MwLTItMC41LTMuOC0xLjQtNS4zYy0wLjktMS41LTIuMS0yLjUtMy43LTMuMgoJCXMtNC4xLTEtNy42LTFoLTExLjN2MzIuM2g2LjJ2LTEzLjdoNS40bDcuMywxMy43aDYuN0wzOTQuNCwzMjguNXogTTM5My40LDMyMi40Yy0wLjcsMC41LTEuMSwwLjgtMy4xLDAuOGgtNy43di02LjZoNy41CgkJYzEuNSwwLDEuOCwwLjEsMi40LDAuM2MwLjYsMC4yLDEuMSwwLjYsMS41LDEuMWMwLjQsMC41LDAuNSwxLjEsMC41LDEuOEMzOTQuNSwzMjEuMSwzOTQuMiwzMjEuOSwzOTMuNCwzMjIuNHoiLz4KCTxwb2x5Z29uIGZpbGw9IiM0QzRDNEMiIHBvaW50cz0iMzQ4LjksMzEwLjYgMzY5LjksMzEwLjYgMzY5LjksMzE2LjYgMzU1LDMxNi42IDM1NSwzMjMuMiAzNjkuOSwzMjMuMiAzNjkuOSwzMjkuMSAzNTUsMzI5LjEgCgkJMzU1LDMzNi44IDM2OS45LDMzNi44IDM2OS45LDM0Mi45IDM0OC45LDM0Mi45IDM0OC45LDMxMC42IAkiLz4KCTxwb2x5Z29uIGZpbGw9IiM0QzRDNEMiIHBvaW50cz0iMzE2LjQsMzEwLjYgMzIyLjMsMzEwLjYgMzM2LjIsMzMxLjggMzM2LjIsMzEwLjYgMzQyLjMsMzEwLjYgMzQyLjMsMzQyLjkgMzM2LjQsMzQyLjkgCgkJMzIyLjYsMzIxLjcgMzIyLjYsMzQyLjkgMzE2LjQsMzQyLjkgCSIvPgoJPHBhdGggZmlsbD0iIzRDNEM0QyIgZD0iTTMwNi45LDMxNS4zYy0zLjEtMy4xLTYuOS00LjctMTEuMi00LjdjLTIuOSwwLTUuNSwwLjctOCwyLjJjLTIuNSwxLjQtNC40LDMuNC01LjksNS45CgkJYy0xLjQsMi41LTIuMSw1LjItMi4xLDguMWMwLDQuNCwxLjUsOC4yLDQuNiwxMS40YzMsMy4yLDYuOSw0LjgsMTEuNSw0LjhjNC40LDAsOC4xLTEuNSwxMS4yLTQuN2MzLjEtMy4xLDQuNi02LjksNC42LTExLjQKCQlDMzExLjUsMzIyLjMsMzEwLDMxOC40LDMwNi45LDMxNS4zeiBNMzAyLjgsMzM0LjFjLTEuOSwyLTQuMywzLTcuMSwzYy0yLjUsMC00LjYtMC44LTYuNS0yLjNjLTIuNC0yLTMuNy00LjctMy43LTguMQoJCWMwLTMsMS01LjYsMi45LTcuNWMxLjktMiw0LjMtMyw3LjItM2MyLjgsMCw1LjIsMSw3LjIsM2MyLDIsMyw0LjUsMyw3LjRDMzA1LjcsMzI5LjcsMzA0LjcsMzMyLjEsMzAyLjgsMzM0LjF6Ii8+Cgk8cGF0aCBpZD0iXzc0NzQ5MDg4XzJfIiBmaWxsPSIjNEM0QzRDIiBkPSJNMjQ0LjgsMzEwLjZoNmw3LjUsMjIuNmw3LjYtMjIuNmg1LjlsNS40LDMyLjNoLTUuOWwtMy41LTIwLjRsLTYuOSwyMC40aC01LjRsLTYuOC0yMC40CgkJbC0zLjUsMjAuNGgtNkwyNDQuOCwzMTAuNkwyNDQuOCwzMTAuNnoiLz4KPC9nPgo8L3N2Zz4K">
         </a>
 
     </div>
@@ -10668,10 +10676,15 @@ html { font-family: sans-serif }
     <div class="row">
         <div class="col s12">
             <p>
-                This page generates a new <a href="http://getmonero.org/">Monero</a> wallet. It is self contained and
+                This page generates a new
+                <select onchange="js:setCoin(this.selectedIndex);" class="waves-effect waves-light btn" style="max-width: 20%">
+                  <option>Monero</option>
+                  <option>Aeon</option>
+                </select>
+                wallet. It is self contained and
                 does all the necessary calculations locally, so is suitable for generating a new wallet on a machine
                 that is not connected to the network, and may even never be. This way, you can create
-                a Monero wallet without risking the keys. This file is GPG signed, see <a href="https://moneroaddress.org/#gpg-instructions">GPG instructions</a>.
+                a Monero/Aeon wallet without risking the keys. This file is GPG signed, see <a href="https://moneroaddress.org/#gpg-instructions">GPG instructions</a>.
                 You can check for up to date versions of this page
                 <a href="https://github.com/moneromooo-monero/monero-wallet-generator/blob/master/monero-wallet-generator.html">here</a>.
             </p>
@@ -10679,9 +10692,10 @@ html { font-family: sans-serif }
     </div>
     <div class="row valign-wrapper">
         <div class="col s4 right-align ">
-                <input class="btn orange" type="button" onclick="js:genwallet(null);" value="Generate wallet" action="">
-                <p>Custom entropy (leave empty to use PRNG)</p>
-                <input type="text" value="" id="user_entropy_widget">
+                <input class="btn orange" type="button" onclick="js:genwallet(null);" value="Generate wallet" id="gen_with_custom_entropy_button" action="">
+                <p>Custom entropy for deterministic wallet (leave empty to use the browser's PRNG)</p>
+                <input type="text" value="" id="user_entropy_widget" oninput="js:checkEntropy();">
+                <div style="color: red; display: none" id="user_entropy_warning_widget">WARNING: entropy is way too low for the wallet to be secure: aim for 256 bits (about a hundred dice throws)</div>
         </div>
         <div class="col s1 offset-s1"><h4>or</h4></div>
         <div class="col s5 offset-s1">
@@ -10695,12 +10709,12 @@ html { font-family: sans-serif }
     <div class="row center-align">
         <div class="col s12">
             <form>
-                <input class="waves-effect waves-light btn" type="button" onclick="js:genwallet(&#39;english&#39;);" value="English" action="">
-                <input class="waves-effect waves-light btn" type="button" onclick="js:genwallet(&#39;spanish&#39;);" value="Spanish" action="">
+                <input class="waves-effect waves-light btn" type="button" onclick="js:genwallet(&#39;english&#39;);" value="English" action="" id="lang_en">
+                <input class="waves-effect waves-light btn" type="button" onclick="js:genwallet(&#39;spanish&#39;);" value="Spanish" action="" id="lang_es">
                 <!-- portuguese word list has a few prefix collisions
-                      <input type="button" onclick="js:genwallet('portuguese');" value="Portuguese" action=""/>
+                      <input type="button" onclick="js:genwallet('portuguese');" value="Portuguese" action=""/ id=lang_pt>
                 -->
-                <input class="waves-effect waves-light btn" type="button" onclick="js:genwallet(&#39;japanese&#39;);" value="Japanese" action="">
+                <input class="waves-effect waves-light btn" type="button" onclick="js:genwallet(&#39;japanese&#39;);" value="Japanese" action="" id="lang_jp">
                 <br>
                 <font size="-1">(restoring non English language seeds needs a recent simplewallet)</font>
             </form>
@@ -10712,16 +10726,16 @@ html { font-family: sans-serif }
                 <div class="card-content light-green-text text-darken-4">
                     <span class="card-title light-green-text text-darken-4">
                       Public address
-                      <input type="button" class="waves-effect waves-light btn" onclick="js:toggle_qr();" value="Show QR code" action="" style="line-height: 25px; height: 25px; font-size: 60%; padding: 0px 1.5rem;">
+                      <input type="button" class="waves-effect waves-light btn" onclick="js:toggle_qr();" value="Show QR code" action="" style="line-height: 25px; height: 25px; font-size: 60%; padding: 0px 1.5rem;" id="show_qr_code">
                     </span>
 
-                    <p>This is the address you give to third parties to send monero to you.
+                    <p>This is the address you give to third parties to send aeon/monero to you.
                         <br><b>It is the only information here that's meant to be public.</b>
                     </p>
                 </div>
                 <div class="card-action center-align">
-                    <pre class="center-align" id="address_widget">4412XRBZFc8daVo7wKMJwhJvWfPZNJLqRJKdoqCNcH9ReXNRFrURVzXXbtJPh7srb7di127HHgaN3CTzfuBt43eVVkT9Xs2nHPgzy3</pre>
-                    <span class="qrcode" id="address_qr_widget" onclick="js:toggle_qr();" title="monero:4412XRBZFc8daVo7wKMJwhJvWfPZNJLqRJKdoqCNcH9ReXNRFrURVzXXbtJPh7srb7di127HHgaN3CTzfuBt43eVVkT9Xs2nHPgzy3"><canvas width="256" height="256" style="display: none;"></canvas><img src="data:image/png;base64,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" style="display: block;"></span>
+                    <pre class="center-align" id="address_widget">453Bkvm3GRnbVzKZfSiE5C97wLfENtZbyWpR6hvqzRPVHkBxPdehJazDuuP5qQLi2QHQsnNUF7FxPbNiUcKvfEQoSkKsveW</pre>
+                    <span class="qrcode" id="address_qr_widget" onclick="js:toggle_qr();" title="monero:453Bkvm3GRnbVzKZfSiE5C97wLfENtZbyWpR6hvqzRPVHkBxPdehJazDuuP5qQLi2QHQsnNUF7FxPbNiUcKvfEQoSkKsveW"><canvas width="256" height="256" style="display: none;"></canvas><img src="data:image/png;base64,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" style="display: block;"></span>
                 </div>
             </div>
         </div>
@@ -10732,12 +10746,12 @@ html { font-family: sans-serif }
                 <div class="card-content pink-text text-darken-5">
                     <span class="card-title pink-text text-darken-5">Mnemonic seed</span>
                     <p>
-                        The mnemonic seed is a string that comprises 25 words and allows you to recreate your
+                        The mnemonic seed is a string that comprises 24 (Aeon) or 25 (Monero) words and allows you to recreate your
                         private keys. <b>Keep it secure!</b>
                     </p>
                 </div>
                 <div class="card-action center-align">
-                    <h5 class="grey-text text-darken-4" id="mnemonic_widget">sowed lobster rodent dewdrop usage bogeys lobster cunning observant rally welders damp uncle jubilee lynx strained sifting baptism wipeout framed apply lyrics etiquette fawns dewdrop</h5>
+                    <h5 class="grey-text text-darken-4" id="mnemonic_widget">dizzy soya oatmeal focus oncoming cafe maul lukewarm network sayings giddy nifty doing hefty ascend owls wrist exquisite popular bacon wife hire knowledge legion knowledge</h5>
                 </div>
             </div>
         </div>
@@ -10760,11 +10774,11 @@ html { font-family: sans-serif }
                         <tbody>
                         <tr>
                             <td><pre>Spend key:</pre></td>
-                            <td><pre id="spend_key_widget">04cde33a166ccd336060506d2b88323738d651108ed79f51d78b85bf418ce603</pre></td>
+                            <td><pre id="spend_key_widget">e873c0cafe7c6a8713b3480fec513c3dcb29f1b12f7a474ad0525ce26d6ea303</pre></td>
                         </tr>
                         <tr>
                             <td><pre>View key:</pre></td>
-                            <td><pre id="view_key_widget">907d12Gf5D96s1a8ezVdnrYeqYcVf4MVe2KW7Y06b1415f78548dc768c837348670b230b</pre></td>
+                            <td><pre id="view_key_widget">d24511d2953366e4d5cf12bd02e42a9094af2c9baf2e2115708496cbb9aef103</pre></td>
                         </tr>
                         </tbody>
                     </table>
@@ -10788,7 +10802,9 @@ html { font-family: sans-serif }
                     <br>
                     If you found this useful, a donation would be appreciated:
                     <br>
-                </p><pre>4AfUP827TeRZ12dsQS9xC2i7NXC8iKZvqJrGn5vBNdECUJ4b5y59bKMZHGb9y58K124iDaX5uGJC4RaNFonnYguruHtmXPevKN</pre>
+                </p><pre>Monero: 4AfUP827TeRZ1cck3tZThgZbRCEwBrpcJTkA1LCiyFVuMH4b5y59bKMZHGb9y58K3gSjWDCBsB4RkGsGDhsmMG5R2qmbLeW</pre>
+                    <br>
+                <pre>Aeon: WmtXcFZj5iGY21JxAtFsJVQmQQyo7jgoJP8V4zLWVzDeeTfvbP8Mzb5gbNpQEc6BkeUYUqjGntHDSDyA6LKjdGBQ1w9iEpfVw</pre>
 
                 <br>
                 Thanks, and welcome to Monero!
@@ -10840,6 +10856,19 @@ place any email address in a new GPG key, so the right email being shown is no g
 </p>
 
 <p>
+NOTE: you will probably also see a warning like this:
+</p>
+
+<code>
+gpg: WARNING: This key is not certified with a trusted signature!
+</code>
+
+<p>
+That is expected, as you only told GPG to import the signature in the steps above, but not
+to trust it. Look for tutorials on GPG if you want to do this, but it is not necessary here.
+</p>
+
+<p>
 If you want to verify an old version of the file, you will have to retrieve the matching
 signature file from git.
 </p>
@@ -10873,6 +10902,9 @@ place any email address in a new GPG key, so the right email being shown is no g
 </footer>
 
 <script>
+window.onbeforeunload = function(e) {
+    return '';
+};
 function poor_mans_kdf(str)
 {
   var hex = cnBase58.bintohex(cnBase58.strtobin(str));
@@ -10884,6 +10916,9 @@ current_lang='english';
 keys = null;
 function genwallet(lang)
 {
+  if(keys && !confirm('Are you sure? This wallet cannot be recovered once a new wallet is generated.')) {
+    return;
+  }
   spend_key_widget = document.getElementById("spend_key_widget");
   view_key_widget = document.getElementById("view_key_widget");
   address_widget = document.getElementById("address_widget");
@@ -10908,12 +10943,18 @@ function genwallet(lang)
 
   spend_key_widget.innerHTML = keys.spend.sec;
   view_key_widget.innerHTML = keys.view.sec;
-  address_widget.innerHTML = keys.public_addr;
+  address_widget.innerHTML = cnUtil.pubkeys_to_string(keys.spend.pub, keys.view.pub);
   address_qr_widget.innerHTML = "";
   mnemonic_widget.innerHTML = mnemonic;
 
-  qr=new QRCode(address_qr_widget, {correctLevel:QRCode.CorrectLevel.L});
-  qr.makeCode("monero:"+keys.public_addr);
+  // only monero has the URI scheme
+  if (prefix_widget.value == "4") {
+    qr=new QRCode(address_qr_widget, {correctLevel:QRCode.CorrectLevel.L});
+    qr.makeCode("monero:"+keys.public_addr);
+  }
+  else {
+    qr = null;
+  }
 }
 
 previous_button_text = "";
@@ -10958,13 +10999,13 @@ function genwallet_prefix_worker()
 
 var zerohex="0000000000000000000000000000000000000000000000000000000000000000";
 var ffhex="ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff";
-var lowest_address=cnUtil.pubkeys_to_string(zerohex,zerohex);
-var highest_address=cnUtil.pubkeys_to_string(ffhex,ffhex);
 
 function is_valid_prefix(prefix)
 {
   if (prefix.length <= 0 || prefix.length >= 95)
     return false;
+  var lowest_address=cnUtil.pubkeys_to_string(zerohex,zerohex);
+  var highest_address=cnUtil.pubkeys_to_string(ffhex,ffhex);
   var lowest=lowest_address.substr(0,prefix.length);
   var highest=highest_address.substr(0,prefix.length);
   if (prefix<lowest)
@@ -11005,8 +11046,8 @@ function genwallet_prefix()
     prefix_widget = document.getElementById("prefix_widget");
     prefix = prefix_widget.value;
     prefix.trim();
-    if (prefix.length < 2 || prefix[0] != "4") {
-      alert("Bad prefix "+prefix+" should start with 4 and be at least one extra character");
+    if (prefix.length < 2) {
+      alert("Bad prefix should be at least two characters");
       return;
     }
     if (!is_valid_prefix(prefix)) {
@@ -11020,6 +11061,40 @@ function genwallet_prefix()
     prefix_widget.disabled = true;
     setTimeout(genwallet_prefix_worker, 0);
   }
+}
+
+function checkEntropy()
+{
+  var good = true;
+  var button = document.getElementById("gen_with_custom_entropy_button")
+  var user_entropy_widget = document.getElementById("user_entropy_widget")
+  var user_entropy = user_entropy_widget.value;
+  var user_entropy_warning_widget = document.getElementById("user_entropy_warning_widget")
+  if (user_entropy.length === 0) {
+    user_entropy_warning_widget.style.display = "none"
+    return
+  }
+
+  var count = new Int32Array(256);
+  for (var n = 0; n < 256; ++n)
+    count[n] = 0
+  for (var n = 0; n < user_entropy.length; ++n)
+    count[user_entropy.charCodeAt(n)]++;
+  var e = 0
+  for (var n = 0; n < 256; ++n) {
+    if (count[n] > 0) {
+      var p = count[n] / user_entropy.length
+      p *= Math.log(p) / Math.log(2)
+      e -= p
+    }
+  }
+  e *= user_entropy.length
+  if (e < 128)
+    good = false
+  if (good)
+    user_entropy_warning_widget.style.display = "none"
+  else
+    user_entropy_warning_widget.style.display = "block"
 }
 
 function toggle_qr()
@@ -11040,6 +11115,47 @@ function toggle_qr()
     view_key_widget.style.display = "none";
     mnemonic_widget.style.display = "none";
   }
+}
+
+function enableElement(id, enable)
+{
+  var el = document.getElementById(id)
+  if (el) {
+    if (enable)
+      el.disabled = false;
+    else
+      el.disabled = true;
+  }
+}
+
+function enableLanguage(code, enable)
+{
+  enableElement("lang_" + code, enable)
+}
+
+function setCoin(index)
+{
+  var enable
+  var language
+  prefix_widget = document.getElementById("prefix_widget");
+  if (index == 0) {
+    cnUtil = cnUtilGen(moneroConfig);
+    prefix_widget.value = "4";
+    enable = true
+    language = "english"
+  }
+  else if (index == 1) {
+    cnUtil = cnUtilGen(aeonConfig);
+    prefix_widget.value = "W";
+    enable = false
+    language = "electrum"
+  }
+  enableLanguage("en", enable)
+  enableLanguage("es", enable)
+  enableLanguage("pt", enable)
+  enableLanguage("jp", enable)
+  enableElement("show_qr_code", enable)
+  genwallet(language);
 }
 
 genwallet();
